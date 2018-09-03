@@ -16,3 +16,7 @@ newUserSchema.methods.setPassword (password, ()=>{
     this.hash = crypto.pbkdf2Sync(password, this.salt, 1000, 64, 'sha512').toString('hex');
 });
 //check the password
+newUserSchema.methods.validPassword(password, ()=>{
+    let hash = crypto.pbkdf2Sync(password, this.salt, 1000, 64, 'sha512').toString('hex');
+    return this.hash ===hash;
+})
