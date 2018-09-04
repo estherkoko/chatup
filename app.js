@@ -6,15 +6,26 @@ const passport = require('passport');
 const app = express();
 const mongoose = require("mongoose");
 const port = 3000;//port number
+const config = require('./config/db');
 const users = require('./routes/users');
 app.use(cors());//CORS Middleware
 app.use(bodyParser.json());//body parser middleware to grab the data
 app.use(bodyParser.urlencoded({extended:true}));
 
-mongoose.Promise=global.Promise;
+//mongoose.Promise=global.Promise;
 
 //use mongoose to connect to mongodb
-mongoose.connect("mongodb://localhost:27017/chat");
+mongoose.connect(config.db);
+
+//Check connection
+mongoose.connection.on('connected to Mongo', () =>{
+  console.log('Connected to db' + config.db);
+});
+
+//Error with DB connection
+mongoose.connection.on('error', (err)=>{
+  console.log('Database encountered an error: ' + err);
+});
 app.use('/users', users);
 
 //db schema
