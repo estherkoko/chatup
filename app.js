@@ -1,16 +1,21 @@
-var express = require("express");
-var app = express();
-var mongoose = require("mongoose");
-var port = 3000;
-
-//body-parser middleware
-var bodyParser = require('body-parser');
-app.use(bodyParser.json());
+const express = require("express");
+const path = require('path');
+const bodyParser = require('body-parser');//body-parser middleware
+const cors = require('cors');
+const passport = require('passport');
+const app = express();
+const mongoose = require("mongoose");
+const port = 3000;//port number
+const users = require('./routes/users');
+app.use(cors());//CORS Middleware
+app.use(bodyParser.json());//body parser middleware to grab the data
 app.use(bodyParser.urlencoded({extended:true}));
+
 mongoose.Promise=global.Promise;
 
 //use mongoose to connect to mongodb
 mongoose.connect("mongodb://localhost:27017/chat");
+app.use('/users', users);
 
 //db schema
 var userSchema = new mongoose.Schema({
@@ -33,10 +38,13 @@ var User = mongoose.model("User", userSchema);
 
 
 //use this to display our actual html page and use the sendfile command to do sto
+//index route
 app.get("/", (req, res) => {
-    res.sendFile(__dirname + "/app/app.component.html");
+   res.sendFile(__dirname + "/src/app/app.component.html");
 });
 
+//static folder
+//app.use(express.static(path.join(__dirname, 'app')));
 //start the server on port 3000
 app.listen(port, ()=>{
     console.log("server is listening on port" + port);
