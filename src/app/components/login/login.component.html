@@ -1,3 +1,23 @@
-<p>
-  login works!
-</p>
+<div class="row">
+    <br>
+      <form class="col s12" (submit)="onLoginSubmit()">
+   <div class="row">
+          <div class="input-field col s12">
+            <input id="username" type="text" [(ngModel)]="username" name="username" class="validate form-control">
+            <label >Username</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="password" type="password" [(ngModel)]="password" name="password" class="validate form-control">
+            <label>Password</label>
+          </div>
+        </div>
+      <div class="row">
+        
+        <button class="btn waves-effect waves-light" type="submit" name="action" value="Login">Login
+            <i class="material-icons right">send</i>
+          </button> 
+      </div>
+      </form>
+    </div>
