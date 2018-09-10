@@ -15,11 +15,11 @@ import { ValidateService} from './services/validate.service';
 import { AuthService} from './services/auth.service';
 import { FlashMessagesModule} from 'angular2-flash-messages';
 import { HttpModule } from '@angular/http';
-
+import { AuthGuard } from './guards/auth.guard';
 const appRoutes : Routes =[
   {path:'', component: HomeComponent},
   {path:'login', component: LoginComponent},
-  {path:'profile', component: ProfileComponent},
+  {path:'profile', component: ProfileComponent, canActivate: [AuthGuard]},
   {path:'register', component: RegisterComponent},
 
 
@@ -42,7 +42,7 @@ const appRoutes : Routes =[
     HttpModule
     
   ],
-  providers: [ValidateService, AuthService],
+  providers: [ValidateService, AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
