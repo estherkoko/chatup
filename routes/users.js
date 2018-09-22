@@ -78,8 +78,7 @@ router.get('/', (req, res, next)=>{
 
 //get user by username
 router.get('/:username', (req, res, next)=>{
-    console.log(req.params.username);
-    User.findOne({ username: 'baby'}, (err,user) => {
+    User.findOne({ username: req.params.username}, (err,user) => {
         if(err) return next(err);
         res.json(user);
     });
