@@ -13,9 +13,5 @@ export class AppComponent {
   email    : any;
   created_date : any;
 
-  onEnter(fullname){
-   this.fullname=fullname;
-   console.log(this.fullname);
-  }
 
 }

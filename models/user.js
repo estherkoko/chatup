@@ -21,6 +21,7 @@ const config = require('../config/db');
   module.exports.getUserByUsername = function(username, callback){
       const query = {username:username}
       User.findOne(query, callback);
+      //console.log('this is query' +  User.findOne(query, callback));
   }
 
   //set the password
@@ -39,3 +40,4 @@ const config = require('../config/db');
           callback(null, isMatch);
       });
   }
+//module.exports = {UserSchema};

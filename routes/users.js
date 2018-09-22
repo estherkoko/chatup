@@ -68,4 +68,21 @@ router.get('/profile', passport.authenticate('jwt', {session:false}),(req, res, 
     //res.send('PROFILE');
 });
 
+//all users
+router.get('/', (req, res, next)=>{
+    User.find((err,users) =>{
+        if(err) return next(err);
+        res.json(users);
+    })
+});
+
+//get user by username
+router.get('/:username', (req, res, next)=>{
+    console.log(req.params.username);
+    User.findOne({ username: 'baby'}, (err,user) => {
+        if(err) return next(err);
+        res.json(user);
+    });
+});
+
 module.exports=router;
