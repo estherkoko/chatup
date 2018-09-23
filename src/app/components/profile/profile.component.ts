@@ -44,13 +44,4 @@ export class ProfileComponent implements OnInit {
   }
 
 
-
-/*
-  clearForm(event){
-    this.chat_input = '';
-  }
-
-  onSubmit(event){
-    this.chat_input ='';
-  }*/
   }

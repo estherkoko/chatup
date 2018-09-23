@@ -10,13 +10,15 @@ import { HttpClient } from '@angular/common/http';
 })
 export class UsersComponent implements OnInit {
 
+  users: any;
   constructor(private chatService: ChatService, private httpClient: HttpClient)
  { }
 
   ngOnInit() {
-    this.chatService.getUsersList();
+    this.chatService.getUsersList().subscribe((response) => {
+      this.users = response;
+      //pagination
+      
+    });
   }
-
-
- 
 }
