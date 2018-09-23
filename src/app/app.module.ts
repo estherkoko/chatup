@@ -23,12 +23,30 @@ import { HttpClientModule } from '@angular/common/http';
 import { ChatService } from './services/chat.service';
 
 const appRoutes : Routes =[
-  {path:'', component: HomeComponent},
-  {path:'login', component: LoginComponent},
-  {path:'profile', component: ProfileComponent, canActivate: [AuthGuard]},
-  {path:'register', component: RegisterComponent},
-  {path:'user', component: UsersComponent},
-  {path: 'userDetails', component: UserDetailsComponent}
+  {
+    path:'', 
+    component: HomeComponent
+  },
+  {
+    path:'login', 
+    component: LoginComponent
+  },
+  {
+    path:'profile', 
+    component: ProfileComponent, 
+    canActivate: [AuthGuard]},
+  {
+    path:'register',
+    component: RegisterComponent
+  },
+  {
+    path:'user', 
+    component: UsersComponent
+  },
+  {
+    path: 'user/:username', 
+    component: UserDetailsComponent
+  }
 
 
 

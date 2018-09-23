@@ -12,16 +12,16 @@ export class ChatService {
 
 
   //initialized URI to for the user controller
-  readonly baseURL = 'http://localhost:3000';
-  private allUsers  = []; 
-  selectedUser: any = {};
+  readonly baseURL = 'http://localhost:3000/users';
 
-  constructor(private httpClient: HttpClient, private http:Http) { }
+  constructor(private http: HttpClient) { }
 
   getUsersList(){
-    this.httpClient.get(this.baseURL + '/allUsers').subscribe((res : any[])=>{
-    console.log(res);
-    this.allUsers = res;
-    });
-}
+    return this.http.get(this.baseURL);
+  }
+
+  getUserInfo(username){
+    const url = this.baseURL+'/'+username;
+    return this.http.get(url);
+  }
 }
