@@ -17,6 +17,7 @@ export class UsersComponent implements OnInit {
   ngOnInit() {
     this.chatService.getUsersList().subscribe((response) => {
       this.users = response;
+      console.log("I am getting userlist");
       //pagination
       
     });

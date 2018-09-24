@@ -5,13 +5,6 @@
   <li class="list-group-item">Email: {{user.email}}</li>
 </div>
 
-<ul class="collection with-header">
-    <li class="collection-header"><h4>First Names</h4></li>
-    <li class="collection-item" *ngFor="let product of chatService.allUsers"><div>{{product.fullname}} <a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div></li>
-</ul>
-<input type="text" class="form-control"  id="user_email" placeholder="user_email"  />
-<button text="join room"  class="btn btn-primary btn-block" id= "btn" onclick="btn"> Join Room</button>                
-  
 <div id="future"></div>
  <form id="form" id="chat_form">
             <input id="chat_input" type="text">

@@ -12,7 +12,7 @@ export class ChatService {
 
 
   //initialized URI to for the user controller
-  readonly baseURL = 'http://localhost:3000/users';
+  readonly baseURL = 'http://localhost:3000/api/users';
 
   constructor(private http: HttpClient) { }
 

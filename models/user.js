@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
-const config = require('../config/db');
 
  
 //registered user schema
@@ -40,4 +39,3 @@ const config = require('../config/db');
           callback(null, isMatch);
       });
   }
-//module.exports = {UserSchema};
