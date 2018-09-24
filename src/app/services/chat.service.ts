@@ -6,7 +6,6 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 
 
-
 @Injectable()
 export class ChatService {
 
@@ -23,5 +22,11 @@ export class ChatService {
   getUserInfo(username){
     const url = this.baseURL+'/'+username;
     return this.http.get(url);
+  }
+
+  //post request for message to db from http client 
+  postMessage(message){
+      return this.http.post(this.baseURL, message);
+
   }
 }

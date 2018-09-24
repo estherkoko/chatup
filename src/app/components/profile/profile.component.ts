@@ -1,11 +1,8 @@
 import { Component, OnInit, Injectable } from '@angular/core';
 import { AuthService} from '../../services/auth.service';
 import { Router } from '@angular/router';
-import { NgForm } from '@angular/forms';
-import { User } from 'models/user';
 import { ChatService } from '../../services/chat.service';
 import { HttpClient } from '@angular/common/http';
-import {Observable} from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 //import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/catch';

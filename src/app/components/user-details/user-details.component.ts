@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ChatService } from '../../services/chat.service';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../../services/auth.service';
+import { NgForm } from '../../../../node_modules/@angular/forms';
 
 @Component({
   selector: 'app-user-details',
@@ -28,6 +29,14 @@ export class UserDetailsComponent implements OnInit {
     this.chatService.getUserInfo(username).subscribe(data => {
       this.user = data;
     })
+  }
+
+  onSubmit(form : NgForm){
+      this.chatService.postMessage(form.value).subscribe((res)=>{
+        //this.resetForm(form);
+        console.log("My message is now sent");
+      })
+    
   }
 
     
