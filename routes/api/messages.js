@@ -1,12 +1,11 @@
 const express = require('express');
 const router = express.Router();
-//const Message = require('../../models/message');
 const {message}= require('../../models/message');
 
 
 //post request - to send data
 router.post('/', (req, res) => {
-    //create object of wine callled myWine - send details of wine using request.body object
+    //create object of message callled myMessage - send details of message using request.body object
     const myMessage = new message({
         sender: req.body.sender,
         receiver: req.body.receiver,
@@ -25,7 +24,7 @@ router.post('/', (req, res) => {
 router.get('/', (req, res) => {
     message.find((err, docs) => {
         if (!err) {res.send(docs);}
-        else {console.log('Error in Retrieving Wines : ' + JSON.stringify(err, undefined, 2));}
+        else {console.log('Error in Retrieving Messages : ' + JSON.stringify(err, undefined, 2));}
     });
 });
 

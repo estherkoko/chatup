@@ -8,5 +8,5 @@ const message = mongoose.model('message', {
 
 });
 
-//export wines
+//export message
 module.exports = {message};
