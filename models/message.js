@@ -1,12 +1,12 @@
-const mongoose = require ('mongoose');
-const bcrypt = require('bcryptjs');
+const mongoose = require('mongoose');
 
-//create message schema for the database
-const MessageSchema = mongoose.Schema('message', {
+const message = mongoose.model('message', {
     sender: String,
     receiver: String,
+    message : String,
     created_date: {type: Date, default: Date.now}
-})
 
-//export message model
+});
+
+//export wines
 module.exports = {message};

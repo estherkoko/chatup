@@ -8,6 +8,7 @@ const mongoose = require("mongoose");
 const port = 3000;//port number
 const config = require('./config/db');
 const users = require('./routes/api/users');
+const messages = require('./routes/api/messages');
 
 require('./config/passport')(passport);
 
@@ -41,6 +42,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/api/users', users);
+app.use('/api/messages', messages);
 
 //index route
 app.get('/', (req, res)=>{

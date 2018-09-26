@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes, RoutesRecognized} from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 
 import { AppComponent } from './app.component';
@@ -67,6 +68,7 @@ const appRoutes : Routes =[
     BrowserModule,
     RouterModule.forRoot(appRoutes),
     FormsModule,
+    CommonModule,
     FlashMessagesModule.forRoot(),
     HttpModule,
     HttpClientModule
