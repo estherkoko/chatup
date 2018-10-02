@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const message = mongoose.model('message', {
     sender: String,
     receiver: String,
-    message : String,
+    content : String,
     created_date: {type: Date, default: Date.now}
 
 });

@@ -6,12 +6,4 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'chatservice';
-  fullname:string;
-  username : any;
-  password : any;
-  email    : any;
-  created_date : any;
-
-
 }

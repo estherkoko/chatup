@@ -9,7 +9,7 @@ router.post('/', (req, res) => {
     const myMessage = new message({
         sender: req.body.sender,
         receiver: req.body.receiver,
-        message: req.body.message,
+        content: req.body.content,
         created_date: req.body.created_date
 
     });
@@ -29,5 +29,17 @@ router.get('/', (req, res) => {
 });
 
 
+//to get messages between two users
+router.post('/getmessages', (req, res, next) => {
+    message.find()
+    .or([
+        { $and: [{sender: req.body.user1}, {receiver: req.body.user2}] },
+        { $and: [{sender: req.body.user2}, {receiver: req.body.user1}] }
+    ])
+    .exec(function (err, results) {
+        if (!err) {res.send(results);}
+        else {console.log('Error in Retrieving Messages : ' + JSON.stringify(err, undefined, 2));}
+    });
+});
 
 module.exports=router;

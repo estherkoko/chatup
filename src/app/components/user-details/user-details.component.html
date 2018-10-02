@@ -2,20 +2,16 @@
   user-details works! {{ user?.fullname }} {{ user?.username }}
 </p>
 
+<ul>
+  <li *ngFor="let message of messages">{{ message.sender }} - {{ message.content }}</li>
+
+</ul>
 
 <div class="row">
   <form class="col s12" (submit)="onMessageSubmit(messageForm)" #messageForm = "ngForm">
     <div class="row">
-      <div class="input-field col s12" *ngIf="loggedInUser"> 
-        <input id="sender" type="text" class="validate form-control" name="sender" [(ngModel)]="loggedInUser._id">
-        <label for="Logged_In_User"></label>
-      </div>
-      <div class="input-field col s12" *ngIf="user">
-        <input id="receiver"  type="text"  [(ngModel)]= "user._id" name="receiver">
-        <label for="Selected_User" ></label>
-      </div>
       <div class="input-field col s12">
-        <input id="message"  type="text"  [(ngModel)]= "message" name="message">
+        <input id="content"  type="text"  placeholder = "Please enter your message here" [(ngModel)]= "content" name="content">
         <label for="Selected_User" ></label>
       </div>
     </div>

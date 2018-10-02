@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/toPromise';
 
 
 @Injectable()
@@ -27,7 +26,10 @@ export class ChatService {
   //post request for message to db from http client 
   postMessage(message:any){
       return this.http.post(this.baseURL + 'messages', message);
+  }
 
-
+  //get messages between two users from db
+  getMessages(user1,user2){
+    return this.http.post(this.baseURL + 'messages/getmessages', {user1, user2});
   }
 }
