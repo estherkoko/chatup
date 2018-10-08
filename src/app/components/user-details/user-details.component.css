@@ -1,0 +1,19 @@
+.bubble {margin: 1.6rem 0;}
+
+.bubble a {
+    padding: 0.75rem;
+    border-radius: 15px;
+    color: #fff!important;
+}
+
+.red-bubble{
+    text-align: right;
+}
+.red-bubble a{    
+    background-color: red;
+}
+
+.blue-bubble a{
+    background-color: blue;
+    
+}

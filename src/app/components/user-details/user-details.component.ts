@@ -4,6 +4,7 @@ import { ChatService } from '../../services/chat.service';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../../services/auth.service';
 import { NgForm } from '../../../../node_modules/@angular/forms';
+import { send } from '../../../../node_modules/@types/q';
 
 declare var M: any;
 @Component({
@@ -19,21 +20,25 @@ export class UserDetailsComponent implements OnInit {
   user: any;
   messages: any;
   loggedInUser: any;
-  receiver: String;
-  sender: String;
+  receiver_id: String;
+  sender_id: String;
+  sender_name: String;
+  receiver_name: String;
   content: String;
+
   constructor(private route: ActivatedRoute, private router: Router, private http: HttpClient, 
     private chatService: ChatService, private authService: AuthService) { }
 
-  ngOnInit() {
+  ngOnInit(){
+   
     this.username = this.route.snapshot.params['username'];
     this.getUserInformation(this.username);
-    //this.retrieveMessages();
-    
     //get logged in user information
     
     this.authService.getProfile().subscribe(loggedUser =>{
       this.loggedInUser=loggedUser.user;
+      console.log("id" + this.loggedInUser._id + this.user._id);
+      this.retrieveMessages();
     });
   }
 
@@ -41,14 +46,17 @@ export class UserDetailsComponent implements OnInit {
   getUserInformation(username) {
     this.chatService.getUserInfo(username).subscribe(data => {
       this.user = data;
+      
     });
   }
 
   onMessageSubmit(form: NgForm){
     const m ={
-      sender: this.loggedInUser._id,
-      receiver: this.user._id,
-      content: this.content
+      sender_id: this.loggedInUser._id,
+      receiver_id: this.user._id,
+      content: this.content,
+      sender_name :this.loggedInUser.username,
+      receiver_name: this.user.username
     }
     this.sendMessage(m);
     this.content = '';
@@ -66,8 +74,9 @@ export class UserDetailsComponent implements OnInit {
 
   retrieveMessages(){
     //access chat service to retrieve the information;
+   
     this.chatService.getMessages(this.loggedInUser._id, this.user._id).subscribe((result) => {
-      this.messages = result;
+       this.messages = result;
     }, (err) => {
       console.log(err);
     });

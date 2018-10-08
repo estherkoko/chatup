@@ -1,10 +1,15 @@
-<p>
+<p *ngIf ="messages">
   user-details works! {{ user?.fullname }} {{ user?.username }}
+  user-details works! {{ m?.sender_name }} {{ m?.content }}
+
 </p>
 
 <ul>
-  <li *ngFor="let message of messages">{{ message.sender }} - {{ message.content }}</li>
-
+  <li *ngFor="let message of messages" >
+    <div  [ngClass]="'bubble ' + (message.sender_name != user.username ? 'red-bubble': 'blue-bubble')">
+      <a>{{ message.sender_name }} - {{ message.content }}</a>
+    </div>
+  </li>
 </ul>
 
 <div class="row">

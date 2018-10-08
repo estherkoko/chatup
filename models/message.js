@@ -1,9 +1,12 @@
 const mongoose = require('mongoose');
+const u= require('../models/user');
 
 const message = mongoose.model('message', {
-    sender: String,
-    receiver: String,
-    content : String,
+    sender_id:  String,
+    sender_name: String,
+    receiver_id: String,
+    receiver_name: String,
+    content : String,  
     created_date: {type: Date, default: Date.now}
 
 });

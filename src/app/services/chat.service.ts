@@ -9,7 +9,7 @@ export class ChatService {
 
 
   //initialized URI to for the user controller
-  readonly baseURL = 'http://localhost:3000/api/';
+  readonly baseURL = 'https://chattie.localtunnel.me/api/';
   message: any;
   userData: any = {};
   constructor(private http: HttpClient) { }
@@ -30,6 +30,6 @@ export class ChatService {
 
   //get messages between two users from db
   getMessages(user1,user2){
-    return this.http.post(this.baseURL + 'messages/getmessages', {user1, user2});
+    return this.http.post(this.baseURL + 'messages/getMessages', {user1, user2});
   }
 }

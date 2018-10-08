@@ -7,8 +7,10 @@ const {message}= require('../../models/message');
 router.post('/', (req, res) => {
     //create object of message callled myMessage - send details of message using request.body object
     const myMessage = new message({
-        sender: req.body.sender,
-        receiver: req.body.receiver,
+        sender_id: req.body.sender_id,
+        receiver_id: req.body.receiver_id,
+        sender_name: req.body.sender_name,
+        receiver_name: req.body.receiver_name,
         content: req.body.content,
         created_date: req.body.created_date
 
@@ -30,16 +32,17 @@ router.get('/', (req, res) => {
 
 
 //to get messages between two users
-router.post('/getmessages', (req, res, next) => {
+router.post('/getMessages', (req, res, next) => {
     message.find()
     .or([
-        { $and: [{sender: req.body.user1}, {receiver: req.body.user2}] },
-        { $and: [{sender: req.body.user2}, {receiver: req.body.user1}] }
+        { $and: [{sender_id: req.body.user1}, {receiver_id: req.body.user2}] },
+        { $and: [{sender_id: req.body.user2}, {receiver_id: req.body.user1}] }
     ])
     .exec(function (err, results) {
         if (!err) {res.send(results);}
         else {console.log('Error in Retrieving Messages : ' + JSON.stringify(err, undefined, 2));}
     });
 });
+
 
 module.exports=router;
