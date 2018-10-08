@@ -33,11 +33,10 @@ export class UserDetailsComponent implements OnInit {
    
     this.username = this.route.snapshot.params['username'];
     this.getUserInformation(this.username);
-    //get logged in user information
     
-    this.authService.getProfile().subscribe(loggedUser =>{
+    //get logged in user information and retrieve messages once page loads
+      this.authService.getProfile().subscribe(loggedUser =>{
       this.loggedInUser=loggedUser.user;
-      console.log("id" + this.loggedInUser._id + this.user._id);
       this.retrieveMessages();
     });
   }
