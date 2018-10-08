@@ -31,14 +31,17 @@ export class UserDetailsComponent implements OnInit {
 
   ngOnInit(){
    
+    //get logged in user information and retrieve messages once page loads
+ 
     this.username = this.route.snapshot.params['username'];
     this.getUserInformation(this.username);
     
-    //get logged in user information and retrieve messages once page loads
-      this.authService.getProfile().subscribe(loggedUser =>{
+    this.authService.getProfile().subscribe(loggedUser =>{
       this.loggedInUser=loggedUser.user;
       this.retrieveMessages();
+      
     });
+ 
   }
 
 
