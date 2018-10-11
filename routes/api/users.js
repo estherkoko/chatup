@@ -14,14 +14,27 @@ router.post('/register', (req, res, next)=>{
         password: req.body.password,
         created_date: req.body.created_date
     });
-    User.addUser(newUser,(err, user)=>{
-        if(err){
-            res.json({success: false, msg:'Registration failed'});
-        } else {
-            res.json({success: true, msg: 'Registration successful '});
+
+    //check if username or email already exists
+    User.findOne({username: req.body.username}, (err, existingUser)=>{
+        if(existingUser == null){
+            User.addUser(newUser,(err, user)=>{
+                if(err){
+                   return res.json({success: false, msg:'Registration failed'});
+                } 
+        
+                else {
+                   return res.json({success: true, msg: 'Registration successful '});
+                }
+            });
+        }
+        else{
+            res.json({success: false, msg: 'User already exists'});
+             console.log("User existed");
         }
     });
-  
+    
+ 
 });
 
 //Authenticate
@@ -32,7 +45,7 @@ router.post('/authenticate', (req, res, next)=>{
     User.getUserByUsername(username, (err, user)=>{
         if(err) throw err;
         if(!user){
-            return res.json({success: false, msg: 'User not found'});
+           return res.json({success: false, msg: 'User not found'});
         }
 
         User.comparePassword(password, user.password,(err, isMatch)=>{
@@ -54,7 +67,7 @@ router.post('/authenticate', (req, res, next)=>{
                     }
                 });
             }else {
-                return res.json({success: false, msg: 'Wrong Password'});
+               return res.json({success: false, msg: 'Wrong Password'});
 
             }
         }
