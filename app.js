@@ -3,7 +3,9 @@ const path = require('path');
 const bodyParser = require('body-parser');//body-parser middleware
 const cors = require('cors');
 const passport = require('passport');
-const app = express();
+//const app = express();
+const app = require('express')();
+const http = require('http').Server(app);
 const mongoose = require("mongoose");
 const port = process.env.port || 3000;//port number
 const config = require('./config/db');
@@ -49,12 +51,7 @@ app.get('/', (req, res)=>{
   res.send("Invalid route - please check and try again");
 });
 
-//use this to display our actual html page and use the sendfile command to do so
-app.get('/', function(req, res){
-  res.sendFile(__dirname + '/index.html');
-});
-
-app.listen(port, ()=>{
+http.listen(port, ()=>{
     console.log("server is listening on port" + port);
 });
 

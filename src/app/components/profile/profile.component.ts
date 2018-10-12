@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { ChatService } from '../../services/chat.service';
 import { HttpClient } from '@angular/common/http';
 import 'rxjs/add/operator/map';
-//import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/catch';
 
 
@@ -31,12 +30,6 @@ export class ProfileComponent implements OnInit {
       console.log(err);
       return false;
     });
-   // return this.getUserList();
-    //return this.http.get(this.baseURL);
-  //  this.authService.loadToken
-    //sthis.clearForm();
-    //.map((response:Response)=>response.json());
-
 
   }
 
