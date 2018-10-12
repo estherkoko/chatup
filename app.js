@@ -5,7 +5,8 @@ const cors = require('cors');
 const passport = require('passport');
 //const app = express();
 const app = require('express')();
-const http = require('http').Server(app);
+const http = require('http').createServer(app);
+const io = require('socket.io').listen(http);
 const mongoose = require("mongoose");
 const port = process.env.port || 3000;//port number
 const config = require('./config/db');
@@ -51,6 +52,10 @@ app.get('/', (req, res)=>{
   res.send("Invalid route - please check and try again");
 });
 
+//listen for new connection event for incoming sockets
+io.on('connection', function(socket){
+  console.log('a user connected');
+});
 http.listen(port, ()=>{
     console.log("server is listening on port" + port);
 });

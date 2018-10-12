@@ -4,13 +4,13 @@ import { ChatService } from '../../services/chat.service';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../../services/auth.service';
 import { NgForm } from '../../../../node_modules/@angular/forms';
-import { send } from '../../../../node_modules/@types/q';
+import * as io from 'socket.io-client';
 
 declare var M: any;
 @Component({
   selector: 'app-user-details',
   templateUrl: './user-details.component.html',
-  styleUrls: ['./user-details.component.css']
+  styleUrls: ['./user-details.component.css'],
 })
 
 
@@ -25,14 +25,24 @@ export class UserDetailsComponent implements OnInit {
   sender_name: String;
   receiver_name: String;
   content: String;
+  socket: SocketIOClient.Socket
+
 
   constructor(private route: ActivatedRoute, private router: Router, private http: HttpClient, 
-    private chatService: ChatService, private authService: AuthService) { }
+    private chatService: ChatService, private authService: AuthService) { 
+      this.socket = io.connect(this.chatService.baseURL);
+    }
 
   ngOnInit(){
    
     //get logged in user information and retrieve messages once page loads
- 
+
+   /* io.on('connection', function(socket){
+      console.log('a user connected');
+      socket.on('disconnect', function(){
+        console.log('user disconnected');
+      });
+    });*/
     this.username = this.route.snapshot.params['username'];
     this.getUserInformation(this.username);
     

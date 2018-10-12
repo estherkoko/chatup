@@ -10,8 +10,7 @@
   <form class="col s12" (submit)="onMessageSubmit(messageForm)" #messageForm = "ngForm">
     <div class="row">
       <div class="input-field col s12">
-        <input id="content"  type="text"  placeholder = "Please enter your message here" [(ngModel)]= "content" name="content"><button class="btn waves-effect waves-light" type="submit" [disabled]="!messageForm.valid">Send <i class="material-icons right">send</i>
-        </button>
+        <input id="content"  type="text"  placeholder = "Please enter your message here" [(ngModel)]= "content" name="content">
         <label for="Selected_User"></label>
       </div>
     </div>
