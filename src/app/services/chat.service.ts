@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import * as io from 'socket.io-client';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
 
@@ -12,7 +13,8 @@ export class ChatService {
   readonly baseURL = 'https://chattie.localtunnel.me/api/';
   message: any;
   userData: any = {};
-  constructor(private http: HttpClient) { }
+  private socket;
+  constructor(private http: HttpClient) {this.socket = io.connect(this.baseURL);}
 
   getUsersList(){
     return this.http.get(this.baseURL + 'users');
@@ -31,5 +33,14 @@ export class ChatService {
   //get messages between two users from db
   getMessages(user1,user2){
     return this.http.post(this.baseURL + 'messages/getMessages', {user1, user2});
+
   }
+
+  public sendMessage(m) {
+   this.socket.on('connect',function(){
+    console.log("my name is socket");
+   // this.socket.emit('new-message', m);
+  
+  });  
+}
 }

@@ -12,6 +12,8 @@ const port = process.env.port || 3000;//port number
 const config = require('./config/db');
 const users = require('./routes/api/users');
 const messages = require('./routes/api/messages');
+const fs = require('fs');
+
 
 require('./config/passport')(passport);
 
@@ -52,10 +54,28 @@ app.get('/', (req, res)=>{
   res.send("Invalid route - please check and try again");
 });
 
+/* socket stuf */
+function handler (req, res) {
+  fs.readFile(__dirname + '/index.html',
+  function (err, data) {
+    if (err) {
+      res.writeHead(500);
+      return res.end('Error loading index.html');
+    }
+
+    res.writeHead(200);
+    res.end(data);
+  });
+}
 //listen for new connection event for incoming sockets
-io.on('connection', function(socket){
-  console.log('a user connected');
+
+io.on('connection', function (socket) {
+  socket.emit('news', { hello: 'world' });
+  socket.on('my other event', function (data) {
+    console.log(data);
+  });
 });
+/* socket stuff end */
 http.listen(port, ()=>{
     console.log("server is listening on port" + port);
 });
