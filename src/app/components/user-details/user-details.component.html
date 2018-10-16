@@ -1,0 +1,23 @@
+<ul>
+  <li *ngFor="let message of messages" >
+    <div  [ngClass]="'bubble ' + (message.sender_name != user.username ? 'red-bubble': 'blue-bubble')">
+      <a>{{ message.sender_name }} - {{ message.content }} - {{ message.created_date | date: "short"}}</a>
+    </div>
+  </li>
+</ul>
+
+<div class="row">
+  <form class="col s12" (submit)="onMessageSubmit(messageForm)" #messageForm = "ngForm">
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="content"  type="text"  placeholder = "Please enter your message here" [(ngModel)]= "content" name="content">
+        <label for="Selected_User"></label>
+      </div>
+    </div>
+ 
+    <div class="form-group">
+    <button class="btn waves-effect waves-light" type="submit" [disabled]="!messageForm.valid">Send
+      <i class="material-icons right">send</i>
+    </button></div>
+  </form>
+</div>

@@ -1,13 +1,23 @@
 <nav>
   <div class="nav-wrapper">
     <a href="#" class="brand-logo">Chatty</a>
+    <a href="#" data-target="mobile-demo"  class="sidenav-trigger"><i class="material-icons" id="s">menu</i></a>
     <ul id="nav-mobile" class="right hide-on-med-and-down">
       <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a [routerLink] = "['/']">Home</a></li>
       <li *ngIf="authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a [routerLink] = "['/profile']">Profile</a></li>
       <li *ngIf="!authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a [routerLink] = "['/login']">Login</a></li>
       <li *ngIf="!authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a [routerLink] = "['/register']">Register</a></li>
+      <li *ngIf="authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a [routerLink] = "['/user']">chatty</a></li>
       <li *ngIf="authService.loggedIn()" ><a (click) = "onLogoutClick()" href="#">Logout</a></li>
     </ul>
   </div>
 </nav>
+<ul class="sidenav" id="mobile-demo">
+  <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a [routerLink] = "['/']">Home</a></li>
+  <li *ngIf="authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a [routerLink] = "['/profile']">Profile</a></li>
+  <li *ngIf="!authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a [routerLink] = "['/login']">Login</a></li>
+  <li *ngIf="!authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a [routerLink] = "['/register']">Register</a></li>
+  <li *ngIf="authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a [routerLink] = "['/user']">chatty</a></li>
+  <li *ngIf="authService.loggedIn()" ><a (click) = "onLogoutClick()" href="#">Logout</a></li>
+</ul>
       

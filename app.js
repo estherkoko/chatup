@@ -3,27 +3,20 @@ const path = require('path');
 const bodyParser = require('body-parser');//body-parser middleware
 const cors = require('cors');
 const passport = require('passport');
-const app = express();
+//const app = express();
+const app = require('express')();
+const http = require('http').createServer(app);
+const io = require('socket.io').listen(http);
 const mongoose = require("mongoose");
-const port = 3000;//port number
+const port = process.env.port || 3000;//port number
 const config = require('./config/db');
+const users = require('./routes/api/users');
+const messages = require('./routes/api/messages');
+const fs = require('fs');
 
-//mongoose.Promise=global.Promise;
-
-
-//CORS Middleware
-app.use(cors());
-
-//body parser middleware to grab the data
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended:true}));
-
-
-//Passport Middleware
-app.use(passport.initialize());
-app.use(passport.session());
 
 require('./config/passport')(passport);
+
 //use mongoose to connect to mongodb
 mongoose.connect(config.database);
 
@@ -32,30 +25,64 @@ mongoose.connection.on('connected', () =>{
   console.log('Connected to db: ' + config.database);
 });
 
-
 //Error with DB connection
 mongoose.connection.on('error', (err)=>{
   console.log('Database encountered an error: ' + err);
 });
 
+//CORS Middleware
+app.use(cors());
+//app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
 
-const users = require('./routes/users');
-app.use('/users', users);
+//body parser middleware to grab the data
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}));
+app.use(express.static(path.join(__dirname, 'dist')));
+
+app.set('view engine', 'html'); 
+
+
+//Passport Middleware
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use('/api/users', users);
+app.use('/api/messages', messages);
 
 //index route
 app.get('/', (req, res)=>{
   res.send("Invalid route - please check and try again");
 });
 
-//use this to display our actual html page and use the sendfile command to do sto
-//index route
-app.get("/", (req, res) => {
-   res.sendFile(__dirname + "/src/app/app.component.html");
-});
+/* socket stuf */
+function handler (req, res) {
+  fs.readFile(__dirname + '/index.html',
+  function (err, data) {
+    if (err) {
+      res.writeHead(500);
+      return res.end('Error loading index.html');
+    }
 
-//static folder
-//app.use(express.static(path.join(__dirname, 'app')));
-//start the server on port 3000
-app.listen(port, ()=>{
+    res.writeHead(200);
+    res.end(data);
+  });
+}
+//listen for new connection event for incoming sockets
+
+io.sockets.on('connection', function (socket) {
+  console.log('User connected');
+  socket.emit('message', 'hey connected user' );
+  socket.on('disconnect', function() {
+    console.log('User disconnected');
+  });
+  socket.on('new-message', function (data) {
+    console.log(data);
+    io.emit('new-message', data);    
+  });
+});
+/* socket stuff end */
+http.listen(port, ()=>{
     console.log("server is listening on port" + port);
 });
+
+module.exports=app;

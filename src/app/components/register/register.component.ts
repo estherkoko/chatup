@@ -41,7 +41,7 @@ export class RegisterComponent implements OnInit {
       console.log("Please enter a valid email");
       this.flashMessage.show('Please enter a valid email', {cssClass: 'alert-danger', timeout: 3000});
 
-      return false;
+     // return false;
     }
   
     //Register User
@@ -51,7 +51,7 @@ export class RegisterComponent implements OnInit {
       this.flashMessage.show('You are now a registered user', {cssClass: 'alert-success', timeout: 3000});
       this.router.navigate(['/login']);
     } else {
-      this.flashMessage.show('Something went wrong', {cssClass: 'alert-danger', timeout: 3000});
+      this.flashMessage.show(data.msg, {cssClass: 'alert-danger', timeout: 3000});
       this.router.navigate(['/register']);
     }
   });

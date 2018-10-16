@@ -1,0 +1,17 @@
+nav{
+    background-color: #fff!important;
+    box-shadow: none!important;
+}
+nav ul a {
+    color: red;
+    font-weight: bold
+}
+nav .brand-logo {
+    color: red
+}
+div{
+    margin: 0 5%;
+}
+#s{
+    color: red!important;
+}

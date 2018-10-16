@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
+require('../models/user');
 const bcrypt = require('bcryptjs');
-const config = require('../config/db');
 
  
 //registered user schema
@@ -21,6 +21,7 @@ const config = require('../config/db');
   module.exports.getUserByUsername = function(username, callback){
       const query = {username:username}
       User.findOne(query, callback);
+      //console.log('this is query' +  User.findOne(query, callback));
   }
 
   //set the password
