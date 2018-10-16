@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const client = require('socket.io').listen(process.env.port).sockets;
 const {message}= require('../../models/message');
 
 
@@ -18,17 +19,23 @@ router.post('/', (req, res) => {
     //insert new record into mongo database using the save object
     myMessage.save((err, doc)=> {
         if (!err) {res.send(doc);}
-        else {console.log('Error in Wine Save : ' + JSON.stringify(err, undefined, 2));}
+        else {console.log('Error in Message Save : ' + JSON.stringify(err, undefined, 2));}
 
     });
 });
 
+client.on('connection', function(socket){
 router.get('/', (req, res) => {
     message.find((err, docs) => {
-        if (!err) {res.send(docs);}
+        if (!err) {
+            //res.send(docs);
+            socket.emit(res);
+            console.log('emit working');
+        }
         else {console.log('Error in Retrieving Messages : ' + JSON.stringify(err, undefined, 2));}
     });
 });
+})
 
 
 //to get messages between two users

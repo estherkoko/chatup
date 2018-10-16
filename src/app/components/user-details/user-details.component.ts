@@ -4,7 +4,9 @@ import { ChatService } from '../../services/chat.service';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../../services/auth.service';
 import { NgForm } from '../../../../node_modules/@angular/forms';
-import * as io from 'socket.io-client';
+import * as socketio from 'socket.io-client';
+import { Observable } from 'rxjs/Observable';
+
 
 declare var M: any;
 @Component({
@@ -26,40 +28,40 @@ export class UserDetailsComponent implements OnInit {
   receiver_name: String;
   content: String;
   //socket: SocketIOClient.Socket
-  //private socket;
+  private socket;
 
   constructor(private route: ActivatedRoute, private router: Router, private http: HttpClient, 
     private chatService: ChatService, private authService: AuthService) { 
-    //this.socket = io(this.chatService.baseURL);
+    this.socket = socketio('http://localhost:3000');
     }
 
   ngOnInit(){
    
-    //get logged in user information and retrieve messages once page loads
-
-   /* io.on('connection', function(socket){
-      console.log('a user connected');
-      socket.on('disconnect', function(){
-        console.log('user disconnected');
-      });
-    });*/
-    /*
-    this.socket.on('news', function (data) {
-      console.log(data);
-      this.socket.emit('my other event', { my: 'data' });
-    });*/
+    //get logged in user information and retrieve messages once page loads  
     this.username = this.route.snapshot.params['username'];
     this.getUserInformation(this.username);
-    
+
     this.authService.getProfile().subscribe(loggedUser =>{
       this.loggedInUser=loggedUser.user;
       this.retrieveMessages();
       
     });
- 
+    this.socket.on('new-message', function(message){
+      console.log('The server has a message for you' + message);
+    });
+    this.getM()
+    .subscribe((message: string) => {
+      this.messages.push(message);
+    });
   }
 
-
+  public getM = () => {
+    return Observable.create((observer) => {
+        this.socket.on('new-message', (message) => {
+            observer.next(message);
+        });
+    });
+  }
   getUserInformation(username) {
     this.chatService.getUserInfo(username).subscribe(data => {
       this.user = data;
@@ -79,32 +81,26 @@ export class UserDetailsComponent implements OnInit {
     this.sendMessage(m);
     //this.socket.emit('result', m);
     this.content = '';
-    this.retrieveMessages();
-    this.chatService.sendMessage(this.messages);
+   // this.retrieveMessages();
+    //this.chatService.sendMessage(this.messages);
 
   }
 
   sendMessage(message){    
    // send message details to db and route to current user
-   //this.chatService.sendMessage(this.messages);
-
-    this.chatService.postMessage(message).subscribe((result) => {
+   // emit message in real time to user
+       this.chatService.postMessage(message).subscribe();
+    console.log('Message Sent Successfully:', message);
+    this.socket.emit('new-message',message);
     
-      console.log('Message Sent Successfully:', message);
-      
-    }, (err) => {
-      console.log(err);
-    });
-  // console.log(this.socket.emit('sendMessage', { message: this.messages }));
-
-  }
+    }
 
   retrieveMessages(){
     //access chat service to retrieve the information;
    
     this.chatService.getMessages(this.loggedInUser._id, this.user._id).subscribe((result) => {
        this.messages = result;
-    //   this.socket.emit('result', { message: this.messages });
+    //this.socket.emit('new-message', result);
     }, (err) => {
       console.log(err);
     });
