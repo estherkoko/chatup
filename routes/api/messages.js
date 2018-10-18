@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const client = require('socket.io').listen(process.env.port).sockets;
 const {message}= require('../../models/message');
 
 
@@ -24,7 +23,6 @@ router.post('/', (req, res) => {
     });
 });
 
-client.on('connection', function(socket){
 router.get('/', (req, res) => {
     message.find((err, docs) => {
         if (!err) {
@@ -35,7 +33,7 @@ router.get('/', (req, res) => {
         else {console.log('Error in Retrieving Messages : ' + JSON.stringify(err, undefined, 2));}
     });
 });
-})
+
 
 
 //to get messages between two users

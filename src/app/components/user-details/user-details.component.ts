@@ -27,12 +27,13 @@ export class UserDetailsComponent implements OnInit {
   sender_name: String;
   receiver_name: String;
   content: String;
-  //socket: SocketIOClient.Socket
+  created_date: Date;
   private socket;
 
   constructor(private route: ActivatedRoute, private router: Router, private http: HttpClient, 
     private chatService: ChatService, private authService: AuthService) { 
     this.socket = socketio('http://localhost:3000');
+    this.created_date=new Date();
     }
 
   ngOnInit(){
@@ -44,22 +45,23 @@ export class UserDetailsComponent implements OnInit {
     this.authService.getProfile().subscribe(loggedUser =>{
       this.loggedInUser=loggedUser.user;
       this.retrieveMessages();
-      
+      //push message from server to client
+      this.getM()
+      .subscribe((message: string) => {
+        this.messages.push(message);
+
+      });
     });
-    this.socket.on('new-message', function(message){
-      console.log('The server has a message for you' + message);
-    });
-    this.getM()
-    .subscribe((message: string) => {
-      this.messages.push(message);
-    });
+  
   }
 
   public getM = () => {
     return Observable.create((observer) => {
         this.socket.on('new-message', (message) => {
             observer.next(message);
+
         });
+
     });
   }
   getUserInformation(username) {
@@ -75,24 +77,19 @@ export class UserDetailsComponent implements OnInit {
       receiver_id: this.user._id,
       content: this.content,
       sender_name :this.loggedInUser.username,
-      receiver_name: this.user.username
+      receiver_name: this.user.username,
+      created_date: this.created_date
     }
-   //this.socket.emit('connection', form.value);
+ 
     this.sendMessage(m);
-    //this.socket.emit('result', m);
     this.content = '';
-   // this.retrieveMessages();
-    //this.chatService.sendMessage(this.messages);
-
   }
 
   sendMessage(message){    
    // send message details to db and route to current user
    // emit message in real time to user
-       this.chatService.postMessage(message).subscribe();
-    console.log('Message Sent Successfully:', message);
+    this.chatService.postMessage(message).subscribe();
     this.socket.emit('new-message',message);
-    
     }
 
   retrieveMessages(){
@@ -100,7 +97,6 @@ export class UserDetailsComponent implements OnInit {
    
     this.chatService.getMessages(this.loggedInUser._id, this.user._id).subscribe((result) => {
        this.messages = result;
-    //this.socket.emit('new-message', result);
     }, (err) => {
       console.log(err);
     });

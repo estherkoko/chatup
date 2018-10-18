@@ -71,13 +71,16 @@ function handler (req, res) {
 
 io.sockets.on('connection', function (socket) {
   console.log('User connected');
-  socket.emit('message', 'hey connected user' );
   socket.on('disconnect', function() {
     console.log('User disconnected');
   });
+
+  //listen for client message
   socket.on('new-message', function (data) {
-    console.log(data);
-    io.emit('new-message', data);    
+    console.log("sendMessage" ,data);
+  //send message to client
+   io.emit('new-message', data);  
+   console.log('receive', data)
   });
 });
 /* socket stuff end */

@@ -11,11 +11,9 @@ export class ChatService {
 
   //initialized URI to for the user controller
   readonly baseURL = 'https://chatty.localtunnel.me/api/';
-  message: any;
+  message: any 
   userData: any = {};
-  private socket;
-  constructor(private http: HttpClient) {//this.socket = socketio('http://localhost:3000');
-}
+  constructor(private http: HttpClient) {}
 
   getUsersList(){
     return this.http.get(this.baseURL + 'users');
@@ -28,7 +26,6 @@ export class ChatService {
 
   //post request for message to db from http client 
   postMessage(message:any){
-    //this.socket.emit('new-message', this.http.post(this.baseURL + 'messages', message););
     return this.http.post(this.baseURL + 'messages', message);
   }
 
@@ -38,12 +35,4 @@ export class ChatService {
 
   }
   
-/*
-  public sendMessage(m) {
-   this.socket.on('connect',function(){
-    //console.log("my name is socket");
-   this.socket.emit('new-message', m);
-  
-  });  
-}*/
 }
