@@ -3,15 +3,16 @@ nav{
     box-shadow: none!important;
 }
 nav ul a {
-    color: red;
+    color: #007979;
     font-weight: bold
 }
 nav .brand-logo {
-    color: red
+    color: #007979;
+    font-weight: bold
 }
 div{
     margin: 0 5%;
 }
-#s{
-    color: red!important;
+#menu{
+    color: #007979!important;
 }

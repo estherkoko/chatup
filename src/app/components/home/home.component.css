@@ -1,0 +1,29 @@
+img {
+   
+   max-width: 100%;
+   vertical-align: middle;
+}
+h1{
+    text-align: center;
+    font-weight: 500;
+    font-size: 3.5rem;
+    margin-bottom: 0px
+}
+p{
+    text-align:center
+}
+
+.button{
+    padding: 8px 70px 40px 70px;
+    font-weight: bold; 
+    font-size: 16px;
+    margin-left: 25px
+}
+.feature-button{
+    background-color: #fff;
+    color:#007979;
+}
+.login-button{
+    background-color: #007979;
+    color:#fff;
+}
