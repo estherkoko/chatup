@@ -2,6 +2,12 @@ img {
    
    max-width: 100%;
    vertical-align: middle;
+   
+}
+#imgbanner{
+    height: 150px;
+    margin-top: 140px
+
 }
 h1{
     text-align: center;
@@ -27,3 +33,25 @@ p{
     background-color: #007979;
     color:#fff;
 }
+#maindiv{
+    margin: 0 140px ;
+}
+#platform-banner{
+    background-color: #e6f9f9;
+    height: 450px;
+}
+hr{
+    border-top: 3px solid #00cdcd;
+    width:150px;
+    margin-top:20px;
+
+}
+#div1{
+ 
+   border-left: 1px solid #e3e8f4;
+}
+@media screen and (max-width: 601px) {
+    h4 {
+      font-size: 20px;
+    }
+  }
