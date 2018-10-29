@@ -1,0 +1,56 @@
+.sidediv{
+    height:450px;
+    width: 35%!important;
+    border-radius: 2px;
+    background-color: #3367d6
+}
+.loginForm{
+    width: 450px;
+    border-radius: 7px;
+    line-height: 1;
+    box-shadow: 0 1px 7px 2px rgba(0,0,0,.35);
+    padding: 44px 36px 36px
+}
+input{
+    border: 1px solid #dadee2!important;
+    box-shadow: inset 0 0 4px 0 rgba(0,0,0,.15)!important;
+    border-radius: 3px!important;
+    padding: 0px 10px 0px!important;
+}
+.btn{
+    background-color: #3367d6!important;
+    color: #fff;
+    font-weight: 500;
+    width:350px;
+    height: 50px;
+}
+h2, p{
+    color: #fff;
+    
+}
+img{
+    max-width: 100%;
+    vertical-align: middle;
+    margin-top:100px;
+}
+label{
+    color:#373839;
+    padding-left: 14px!important;
+    margin-top:-5px;
+    font-weight: 500;
+   
+}
+.welcome{
+    font-weight: 500
+}
+.leftdiv{
+    margin: 0px
+}
+@media screen and (max-width: 601px) {
+    .btn {
+      width: auto;
+    }
+    .sidediv{
+        display: none
+    }
+  }

@@ -27,10 +27,10 @@ p{
 }
 .feature-button{
     background-color: #fff;
-    color:#007979;
+    color:#3367d6;
 }
 .login-button{
-    background-color: #007979;
+    background-color: #3367d6;
     color:#fff;
 }
 #maindiv{
@@ -41,7 +41,7 @@ p{
     height: 450px;
 }
 hr{
-    border-top: 3px solid #00cdcd;
+    border-top: 3px solid #3367d6;
     width:150px;
     margin-top:20px;
 

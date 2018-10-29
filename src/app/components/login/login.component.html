@@ -1,28 +1,33 @@
 
-<div class="row">
+<div class="row container">
     <br>
-    
-      <form class="col s12" (submit)="onLoginSubmit()">
+    <div class="col s6 sidediv center-align">
+        <img src="../../../assets/img/chatapp.png" />
+        <p>Simple, Seamless, chat application.</p>
+    </div>
+    <div class="col s6 loginForm ">
+      <h4 class="Welcome">Welcome Back</h4>
+      <br>
+      <form  (submit)="onLoginSubmit()">
       <div class="row">
-          <div class="input-field col s12">
-            <input id="username" type="text" [(ngModel)]="username" name="username" class="validate form-control">
-            <label >Username</label>
+          
+          <div class="input-field col s12 leftdiv">
+          <label>Username</label> 
+            <input id="username" type="text" placeholder="e.g ilovechatty" [(ngModel)]="username" name="username" class="validate form-control">
+           
           </div>
         </div>
         <div class="row">
+           
           <div class="input-field col s12">
-            <input id="password" type="password" [(ngModel)]="password" name="password" class="validate form-control">
             <label>Password</label>
+            <input id="password" type="password" placeholder="e.g *****"  name="password" class="validate form-control">
+            
           </div>
         </div>
-      <div class="row">
-        
-        <button class="btn waves-effect waves-light" type="submit" name="action" value="Login">Login
-            <i class="material-icons right">send</i>
-          </button> 
+      <div class="row center-align">
+        <button class="btn waves-light red"type="submit" name="action" value="Login">LOG IN</button> 
       </div>
       </form>
-      <div style="background-color: #00cdcd">
-
-      </div>
+    </div>
   </div>
