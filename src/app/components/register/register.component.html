@@ -1,35 +1,66 @@
-<div class="row">
-  <br>
-    <form class="col s12" (submit)="onRegisterSubmit()">
-      <div class="row">
-        <div class="input-field col s12 form-group">
-          <input  id="fullname" [(ngModel)]="fullname" name="fullname" type="text" class="validate form-control">
-          <label>Full Name</label>
+<div class="#90caf9 blue lighten-3 hero">
+  <div class="container">
+      
+    <div class="row ">
+      <div class="col m8 hide-on-med-and-down">
+          <div style="padding-top:55px">
+              <h6 class="white-text">CREATE AN ACCOUNT</h6>
+    
+          </div>
+          <div class="col m5 left" >
+              <img src="../../../assets/img/undraw_messaging_fun_86y2.svg" class="left"/>
+              </div>
+        <div class="col m3 leftdiv">
+
+          <p>Welcome, You!</p>
+          <p>Feed me with</p>
+          <p>some details.</p>
         </div>
-        </div>
-        <div class="row">
+   
+      </div>
+ <div>
+    <h6 class="white-text center" style="padding-top:55px">Already have an account? <span><a [routerLink]="['/login']">Log in</a></span> </h6>
+      <div class="right col m4 white form-format position center">
+          
+
+        <form class="col s12 padding" (submit)="onRegisterSubmit()">
+          <div class="row">
             <div class="input-field col s12 form-group">
-              <input id="email" type="email" [(ngModel)]="email" name="email" class="validate form-control">
-              <label>Email</label>
+              <i class="material-icons prefix icon-blue">person</i>
+              <input [(ngModel)]="fullname" name="fullname" type="text" class="validate form-control">
+              <label for="icon_prefix">Full Name</label>
+
             </div>
           </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <input id="username" type="text" [(ngModel)]="username" name="username" class="validate form-control">
-          <label >Username</label>
-        </div>
+          <div class="row">
+            <div class="input-field col s12 form-group">
+              <i class="material-icons prefix icon-blue">email</i>
+              <input id="email" type="email" [(ngModel)]="email" name="email" class="validate form-control">
+              <label for="icon_prefix">Email</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <i class="material-icons prefix icon-blue">account_circle</i>
+              <input id="username" type="text" [(ngModel)]="username" name="username" class="validate form-control">
+              <label for="icon_prefix">Username</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <i class="material-icons prefix icon-blue">lock</i>
+              <input id="password" type="password" [(ngModel)]="password" name="password" class="validate form-control">
+              <label for="icon_prefix">Password</label>
+            </div>
+          </div>
+          <div class="row">
+
+            <button class="btn waves-effect waves-light #0d47a1 blue darken-4" type="submit" name="action">Submit
+            </button>
+          </div>
+        </form>
       </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <input id="password" type="password" [(ngModel)]="password" name="password" class="validate form-control">
-          <label>Password</label>
-        </div>
       </div>
-    <div class="row">
-      
-      <button class="btn waves-effect waves-light" type="submit" name="action">Submit
-          <i class="material-icons right">send</i>
-        </button> 
     </div>
-    </form>
   </div>
+</div>
