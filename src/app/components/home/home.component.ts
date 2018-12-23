@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { async } from '../../../../node_modules/rxjs/internal/scheduler/async';
 
 @Component({
   selector: 'app-home',

@@ -1,33 +1,47 @@
-
-<div class="row container">
-    <br>
-    <div class="col s6 sidediv center-align">
-        <img src="../../../assets/img/chatapp.png" />
-        <p>Simple, Seamless, chat application.</p>
-    </div>
-    <div class="col s6 loginForm ">
-      <h4 class="Welcome">Welcome Back</h4>
-      <br>
-      <form  (submit)="onLoginSubmit()">
+<div class="#f5f5f5 grey lighten-5">
+  <div class="container center">
+    <div style="padding: 35px">
       <div class="row">
-          
-          <div class="input-field col s12 leftdiv">
-          <label>Username</label> 
-            <input id="username" type="text" placeholder="e.g ilovechatty" [(ngModel)]="username" name="username" class="validate form-control">
-           
+        <div class="col m6 s12 logindiv">
+          <div class="center-align">
+            <header>Let's get chatty . . .</header><br>
+          </div>
+          <div>
+            <form (submit)="onLoginSubmit()">
+
+              <div class="row col s12">
+                <label class="left">Username</label>
+                <div class="input-field ">
+                  <input id="username" type="text" placeholder="e.g ilovechatty" [(ngModel)]="username" name="username"
+                    class="validate form-control">
+
+                </div>
+              </div>
+              <div class="row col s12">
+                <label class="left">Password</label>
+                <div class="input-field ">
+                  <input id="password" type="password" placeholder="e.g *****" name="password" class="validate form-control">
+
+                </div>
+
+              </div>
+              <div class="col s12 ">
+                <button class="btn waves-light center col s12" type="submit" name="action" value="Login">LOG IN</button>
+              </div>
+              <div class="col s12 ">
+                <p class="#212121 grey-text darken-4 col s12">Don't have an account? <span class="0d47a1 blue-text darken-4"><a
+                      [routerLink]="['/register']">Sign Up</a></span></p>
+              </div>
+
+            </form>
           </div>
         </div>
-        <div class="row">
-           
-          <div class="input-field col s12">
-            <label>Password</label>
-            <input id="password" type="password" placeholder="e.g *****"  name="password" class="validate form-control">
-            
-          </div>
+        <div class="col m6 rightdiv hide-on-med-and-down">
+
+          <p class="welcome ">Welcome to <span>Chatty</span></p>
+          <h5 class="center">Log in to access your account</h5>
+
         </div>
-      <div class="row center-align">
-        <button class="btn waves-light red"type="submit" name="action" value="Login">LOG IN</button> 
       </div>
-      </form>
     </div>
   </div>

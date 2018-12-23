@@ -1,56 +1,60 @@
-.sidediv{
-    height:450px;
-    width: 35%!important;
-    border-radius: 2px;
-    background-color: #3367d6
+.logindiv{
+    background-color: white;
+    height: 600px;
+    padding:50px;
+    box-shadow: 0 10px 16px 6px #eee
 }
-.loginForm{
-    width: 450px;
-    border-radius: 7px;
-    line-height: 1;
-    box-shadow: 0 1px 7px 2px rgba(0,0,0,.35);
-    padding: 44px 36px 36px
-}
+
 input{
-    border: 1px solid #dadee2!important;
-    box-shadow: inset 0 0 4px 0 rgba(0,0,0,.15)!important;
-    border-radius: 3px!important;
-    padding: 0px 10px 0px!important;
+    border-bottom: 1.5px solid #9e9e9e!important;
 }
-.btn{
-    background-color: #3367d6!important;
-    color: #fff;
-    font-weight: 500;
-    width:350px;
-    height: 50px;
+.input-field {
+    position: relative;
+    margin-top: 0;
+    margin-bottom: 1rem;
 }
-h2, p{
-    color: #fff;
-    
+.input-field input[type=text]:focus, input[type].valid {
+    box-shadow: 0 1px 0 0 #3367d6!important;
+    color: #3367d6!important;
+    border-bottom: .05px solid!important;
+    margin-top: none!important
 }
-img{
-    max-width: 100%;
-    vertical-align: middle;
-    margin-top:100px;
-}
-label{
-    color:#373839;
-    padding-left: 14px!important;
-    margin-top:-5px;
-    font-weight: 500;
-   
-}
-.welcome{
-    font-weight: 500
-}
-.leftdiv{
-    margin: 0px
-}
-@media screen and (max-width: 601px) {
-    .btn {
-      width: auto;
-    }
-    .sidediv{
-        display: none
-    }
+.input-field input:focus + label {
+    color: #3367d6 !important;
   }
+
+.row .input-field input:focus {
+    border-bottom: 1px solid #3367d6!important;
+    box-shadow: 0 1px 0 0 #3367d6!important;
+  }
+
+.btn{
+    background-color:#3367d6 !important;
+    font-weight: bold;
+    border-radius: 20px;
+}
+
+span, header{
+    font-weight: bold
+}
+header{
+    color:#3367d6;
+    font-size: 30px;
+    margin: 15px
+}
+.rightdiv{
+    background-color: #3367d6;
+    background: url(../../../assets/img/abstract.jpg);
+    box-shadow: 0 10px 16px 6px #eee;
+    height:600px;
+    color:#eee;
+    overflow: hidden;
+}
+
+
+.welcome{
+    padding: 50px;
+    margin-bottom: -50px;
+    font-size:75px;
+    line-height: 1.2
+}
