@@ -1,16 +1,19 @@
 .logindiv{
     background-color: white;
-    height: 600px;
+    height: 500px;
     padding:50px;
-    box-shadow: 0 10px 16px 6px #eee
+  
 }
-.login-img{
-    background-size: cover;
-    height: 400px;
-    background-image: url('../../../assets/img/undraw_texting_k35o.svg')
+img{
+    margin-left: -250px;
+    height: 500px;
+ 
+}
+.leftdiv{
+    margin-left:50px
 }
 .main-div{
-    height: 100vh;
+    height: 70vh;
 }
 input{
     border-bottom: 1.5px solid #9e9e9e!important;
