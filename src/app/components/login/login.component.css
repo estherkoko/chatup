@@ -4,9 +4,19 @@
     padding:50px;
     box-shadow: 0 10px 16px 6px #eee
 }
-
+.login-img{
+    background-size: cover;
+    height: 400px;
+    background-image: url('../../../assets/img/undraw_texting_k35o.svg')
+}
+.main-div{
+    height: 100vh;
+}
 input{
     border-bottom: 1.5px solid #9e9e9e!important;
+}
+.container{
+    padding:70px;
 }
 .input-field {
     position: relative;
@@ -49,12 +59,4 @@ header{
     height:600px;
     color:#eee;
     overflow: hidden;
-}
-
-
-.welcome{
-    padding: 50px;
-    margin-bottom: -50px;
-    font-size:75px;
-    line-height: 1.2
 }
