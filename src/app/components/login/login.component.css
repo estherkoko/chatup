@@ -53,7 +53,10 @@ span, header{
 header{
     color:#3367d6;
     font-size: 30px;
-    margin: 15px
+    
+}
+form{
+    padding-top: 75px
 }
 .rightdiv{
     background-color: #3367d6;
