@@ -32,8 +32,9 @@ mongoose.connection.on('error', (err)=>{
 
 //CORS Middleware
 app.use(cors());
+//app.use(cors({origin: 'http://localhost:4200'}));
 //app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
-
+//header("Access-Control-Allow-Origin: *");
 //body parser middleware to grab the data
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
