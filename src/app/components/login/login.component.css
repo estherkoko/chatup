@@ -1,23 +1,25 @@
 
 img{
     margin-left: -250px;
-    height: 500px;
+    height: 400px;
 }
 
 .height{
-    height: 70vh;
+    height: 100vh;
 }
 
 .logindiv{
     background-color: white;
-    height: 505px;
+    height: 500px;
     padding:50px;
 }
 
 .left-margin{
     margin-left:50px
 }
-
+.top-margin{
+    margin-top: -15px
+}
 .container{
     padding:70px;
 }
@@ -70,8 +72,6 @@ input{
   }
 
 .btn{
-    background-color:#0D47A1  !important; 
-    font-weight: bold; 
-    height: 50px;
+    background-color:#0D47A1  !important; font-weight: bold; height: 50px;
     font-size: 1em;}
 

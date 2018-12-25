@@ -6,7 +6,7 @@
         <img src='../../../assets/img/chatty.svg'/>
       </div>
       <div class="col m6 s12 logindiv">
-        <div>
+        <div class="top-margin">
           <header class="left">Welcome back</header><br>
           <p class="left">Log in to start chatting now ...</p>
         </div>
@@ -24,13 +24,13 @@
             <div class="row col s12">
               <label class="left">Password</label>
               <div class="input-field ">
-                <input id="password" type="password" placeholder="e.g *****" name="password" class="validate form-control">
+                <input id="password" type="password" placeholder="e.g *****" [(ngModel)]="password" name="password" class="validate form-control">
 
               </div>
 
             </div>
             <div class="col s12 ">
-              <button class="btn waves-light center col s12" type="submit" name="action" value="Login">LOG IN</button>
+              <button class="btn waves-light center col s12 top-margin" type="submit" name="action" value="Login">LOG IN</button>
             </div>
             <div class="col s12 ">
               <p class="#212121 grey-text darken-4 col s12">Don't have an account? <span class="0d47a1 blue-text darken-4"><a

@@ -10,7 +10,7 @@ export class ChatService {
 
 
   //initialized URI to for the user controller
-  readonly baseURL = 'https://chatty.localtunnel.me/api/';
+  readonly baseURL = 'https://localhost:3000/api/';
   message: any 
   userData: any = {};
   constructor(private http: HttpClient) {}

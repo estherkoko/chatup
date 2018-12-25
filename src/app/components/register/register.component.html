@@ -3,7 +3,7 @@
       
     <div class="row ">
       <div class="col m8 hide-on-med-and-down">
-          <div style="padding-top:55px">
+          <div class="pt">
               <h6 class="white-text">CREATE AN ACCOUNT</h6>
     
           </div>
@@ -19,11 +19,14 @@
    
       </div>
  <div>
-    <h6 class="white-text center" style="padding-top:55px">Already have an account? <span><a [routerLink]="['/login']">Log in</a></span> </h6>
-      <div class="right col m4 white form-format position center">
+   <div class="pt">
+      <h6 class="white-text center" >Already have an account? <span><a [routerLink]="['/login']">Log in</a></span> </h6>
+
+   </div>
+      <div class="right col m4 white position formdiv center">
           
 
-        <form class="col s12 padding" (submit)="onRegisterSubmit()">
+        <form class="col s12 " (submit)="onRegisterSubmit()">
           <div class="row">
             <div class="input-field col s12 form-group">
               <i class="material-icons prefix icon-blue">person</i>
