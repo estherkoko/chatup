@@ -4,6 +4,7 @@
     padding: 0.75rem;
     border-radius: 15px;
     color: #fff!important;
+    height: auto;
 }
 
 .red-bubble{
@@ -16,4 +17,14 @@
 .blue-bubble a{
     background-color: blue;
     
+}
+.content{
+  overflow:auto;
+    max-height: 300px;
+ 
+}
+.fixed{
+    position: fixed;
+    width: 50%;
+   
 }

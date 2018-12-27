@@ -1,3 +1,4 @@
+<div class="content">
 <ul>
   <li *ngFor="let message of messages" >
     <div  [ngClass]="'bubble ' + (message.sender_name != user.username ? 'red-bubble': 'blue-bubble')">
@@ -5,8 +6,8 @@
     </div>
   </li>
 </ul>
-
-<div class="row">
+</div>
+<div class="row fixed">
   <form class="col s12" (submit)="onMessageSubmit(messageForm)" #messageForm = "ngForm">
     <div class="row">
       <div class="input-field col s12">
