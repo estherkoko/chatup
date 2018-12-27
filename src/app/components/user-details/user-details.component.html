@@ -2,7 +2,8 @@
 <ul>
   <li *ngFor="let message of messages" >
     <div [ngClass]="'bubble ' + (message.sender_name != user.username ? 'red-bubble': 'blue-bubble')">
-      <a class="height">{{ message.sender_name }} - {{ message.content }}       <p>{{ message.created_date | date: "short"}}</p>
+      <a class="bubble-size">{{ message.sender_name }} - {{ message.content }}       
+        <p>{{ message.created_date | date: "short"}}</p>
       </a>
 
     </div>
