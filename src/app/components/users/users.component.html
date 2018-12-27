@@ -1,6 +1,15 @@
-<ul class="collection with-header">
-  <li class="collection-header"><h4>All Users</h4></li>
-  <li class="collection-item" *ngFor="let user of users">
-   <div>{{user.fullname}}<a [routerLink]="['userpath', user.username]" class="secondary-content"><i class="material-icons">send</i></a></div></li>
-</ul>
-<router-outlet></router-outlet>
+<div class="row">
+  <div class="col 4">
+      <ul class="collection with-header">
+          <li class="collection-header"><h4>All Users</h4></li>
+          <li class="collection-item" *ngFor="let user of users">
+           <div>{{user.fullname}}<a [routerLink]="['userpath', user.username]" class="secondary-content"><i class="material-icons">send</i></a></div></li>
+        </ul>
+  </div>
+
+  <div class="col 8">
+
+      <router-outlet></router-outlet>
+
+  </div>
+</div>

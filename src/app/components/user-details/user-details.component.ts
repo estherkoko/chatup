@@ -30,73 +30,81 @@ export class UserDetailsComponent implements OnInit {
   created_date: Date;
   private socket;
 
-  constructor(private route: ActivatedRoute, private router: Router, private http: HttpClient, 
-    private chatService: ChatService, private authService: AuthService) { 
+  constructor(private route: ActivatedRoute, private router: Router, private http: HttpClient,
+    private chatService: ChatService, private authService: AuthService) {
     this.socket = socketio('http://localhost:3000');
-    this.created_date=new Date();
-    }
+    this.created_date = new Date();
+    this.router.navigate(["username"]);
 
-  ngOnInit(){
-   
-    //get logged in user information and retrieve messages once page loads  
-    this.username = this.route.snapshot.params['username'];
-    this.getUserInformation(this.username);
 
-    this.authService.getProfile().subscribe(loggedUser =>{
-      this.loggedInUser=loggedUser.user;
-      this.retrieveMessages();
-      //push message from server to client
-      this.getM()
-      .subscribe((message: string) => {
-        this.messages.push(message);
+  }
+  ngOnInit() {
 
+    this.route.params.subscribe(params => {
+      //get logged in user information and retrieve messages once page loads  
+      this.username = this.route.snapshot.params['username'];
+      this.getUserInformation(this.username);
+
+      this.authService.getProfile().subscribe(loggedUser => {
+        this.loggedInUser = loggedUser.user;
+        this.retrieveMessages();
+        //push message from server to client
+        this.getM()
+          .subscribe((message: string) => {
+            this.messages.push(message);
+
+          });
       });
     });
-  
+
+
+
   }
+
+
 
   public getM = () => {
     return Observable.create((observer) => {
-        this.socket.on('new-message', (message) => {
-            observer.next(message);
+      this.socket.on('new-message', (message) => {
+        observer.next(message);
 
-        });
+      });
 
     });
   }
   getUserInformation(username) {
     this.chatService.getUserInfo(username).subscribe(data => {
       this.user = data;
-      
+
     });
   }
 
-  onMessageSubmit(form: NgForm){
-    const m ={
+  onMessageSubmit(form: NgForm) {
+    const m = {
       sender_id: this.loggedInUser._id,
       receiver_id: this.user._id,
       content: this.content,
-      sender_name :this.loggedInUser.username,
+      sender_name: this.loggedInUser.username,
       receiver_name: this.user.username,
       created_date: this.created_date
     }
- 
+
     this.sendMessage(m);
     this.content = '';
   }
 
-  sendMessage(message){    
-   // send message details to db and route to current user
-   // emit message in real time to user
+  sendMessage(message) {
+    // send message details to db and route to current user
+    // emit message in real time to user
     this.chatService.postMessage(message).subscribe();
-    this.socket.emit('new-message',message);
-    }
+    this.socket.emit('new-message', message);
+  }
 
-  retrieveMessages(){
+  retrieveMessages() {
     //access chat service to retrieve the information;
-   
+
     this.chatService.getMessages(this.loggedInUser._id, this.user._id).subscribe((result) => {
-       this.messages = result;
+      this.messages = result;
     }, (err) => {
       console.log(err);
     });
