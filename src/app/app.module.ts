@@ -42,13 +42,15 @@ const appRoutes : Routes =[
   },
   {
     path:'user', 
-    component: UsersComponent
+    component: UsersComponent,
+    children: [
+      {
+        path: 'userpath/:username',
+        component: UserDetailsComponent
+      }
+    ]
   },
-  {
-    path: 'user/:username', 
-    component: UserDetailsComponent
-  }
-
+ 
 
 
 ]

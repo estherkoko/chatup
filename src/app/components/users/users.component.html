@@ -1,9 +1,6 @@
-<div class="#90caf9 blue lighten-3 ">
-<div class="container">
-<ul class="collection with-header col m8">
-  <li class="collection-header"><h4>Chatters</h4></li>
+<ul class="collection with-header">
+  <li class="collection-header"><h4>All Users</h4></li>
   <li class="collection-item" *ngFor="let user of users">
-   <div>{{user.username}}<a [routerLink]="['/user', user.username]" class="secondary-content"><i class="material-icons cicon-blue ">send</i></a></div></li>
+   <div>{{user.fullname}}<a [routerLink]="['userpath', user.username]" class="secondary-content"><i class="material-icons">send</i></a></div></li>
 </ul>
-</div>
-</div>
+<router-outlet></router-outlet>
