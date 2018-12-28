@@ -21,14 +21,9 @@
 .content{
   overflow:auto;
   max-height: 300px;
- 
- 
+
 }
-.fixed{
-    position: fixed;
-    width: 50%;
-   
-}
+
 .bubble-size{
     display: inline-block;
     word-break: break-word;

@@ -34,7 +34,7 @@ export class UserDetailsComponent implements OnInit {
     private chatService: ChatService, private authService: AuthService) {
     this.socket = socketio('http://localhost:3000');
     this.created_date = new Date();
-
+    
 
   }
   ngOnInit() {
