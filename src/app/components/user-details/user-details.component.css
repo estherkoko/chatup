@@ -30,9 +30,9 @@
 
 .bubble-size{
     display: inline-block;
-    word-break: break-word;
+    word-break: break-all;
     overflow-wrap: break-word;
-    width: 300px;
+    max-width: 300px;
 }
 p{
     line-height: 0
