@@ -1,6 +1,4 @@
 <div class="row content" >
-     {{ username}}
-
 <ul class="">
   <li *ngFor="let message of messages" >
     <div [ngClass]="'bubble ' + (message.sender_name != user.username ? 'red-bubble': 'blue-bubble')">
