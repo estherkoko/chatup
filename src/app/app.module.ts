@@ -45,7 +45,7 @@ const appRoutes : Routes =[
     component: UsersComponent,
     children: [
       {
-        path: 'userpath/:username',
+        path: 'livechat/:username',
         component: UserDetailsComponent
       }
     ]

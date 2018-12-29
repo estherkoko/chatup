@@ -5,7 +5,7 @@
           <input id="username" type="text" placeholder="search" class="validate form-control">
           <i class="material-icons icon-color">search</i>
           <li class="collection-item " *ngFor="let user of users">
-           <div>{{user.fullname}}<a [routerLink]="['userpath', user.username]" class="secondary-content"><i class="material-icons icon-color">chevron_right</i></a></div></li>
+           <div>{{user.fullname}}<a [routerLink]="['livechat', user.username]" class="secondary-content"><i class="material-icons icon-color">chevron_right</i></a></div></li>
         </ul>
   </div>
 
