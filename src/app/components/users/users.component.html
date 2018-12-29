@@ -1,6 +1,6 @@
 <div class="hero #eceff1 blue-grey lighten-5">
 <div class="row z-depth-3 #ffffff white">
-  <div class="col s4 ">
+  <div class="col s4 hide-on-med-and-down">
       <ul class="list collection with-header">
           <li class="collection-header"><h4>All Users</h4></li>
           <li class="collection-item" *ngFor="let user of users">
@@ -8,7 +8,7 @@
         </ul>
   </div>
 
-  <div class="col s8">
+  <div class="col s12 m8">
 
       <router-outlet></router-outlet>
 

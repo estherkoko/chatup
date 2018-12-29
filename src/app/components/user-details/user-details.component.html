@@ -1,7 +1,7 @@
-<div class="row content fixed " >
+<div class="row content" >
      {{ username}}
 
-<ul>
+<ul class="">
   <li *ngFor="let message of messages" >
     <div [ngClass]="'bubble ' + (message.sender_name != user.username ? 'red-bubble': 'blue-bubble')">
       <a class="bubble-size">{{ message.sender_name }} - {{ message.content }}       
@@ -14,7 +14,7 @@
 </ul>
 
 </div>
-<div class="row ">
+<div class="row " id="message">
     <form class="col s12 " (submit)="onMessageSubmit(messageForm)" #messageForm = "ngForm">
       <div class="row">
         <div class="input-field col s12">
