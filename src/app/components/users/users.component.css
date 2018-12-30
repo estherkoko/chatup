@@ -35,7 +35,7 @@ i.icon-color {
 .form-control + .icon-color {
     position: absolute;
     right: 0;
-    margin-right: 400px;
+    margin-right: 250px;
     margin-top: -60px
   }
   input[type=text]{

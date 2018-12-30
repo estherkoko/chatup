@@ -11,15 +11,16 @@
     
 }
 
-.red-bubble{
+.blue-bubble{
     text-align: right;
 }
-.red-bubble a{    
-    background-color: red;
+.blue-bubble  a {    
+    background-color: #0D47A1;
 }
 
-.blue-bubble a{
-    background-color: blue;
+.grey-bubble a{
+    background-color: #eeeeee;
+    color:#000!important
     
 }
 .content{
@@ -35,10 +36,31 @@
     max-width: 300px;
 }
 p{
-    line-height: 0
+    text-align: left;
+    line-height: 1.5;
+    margin: 0
 }
-@media only screen and (min-width: 800px) {
-    #message {
-       width: 100%;
+button{
+    margin:8px 70px;
+    background-color: #0D47A1;
+}
+#messagebox{
+   border: 1px solid #edeaea;
+   margin:-25px;
+   height: 70px;
+}
+input{
+    border-bottom: none!important
+}
+
+  .row .input-field input:focus {
+    border-bottom: none!important;
+    box-shadow: none
+  }
+
+@media only screen and (max-width: 480px) {
+
+    button{
+        margin: 0!important;
     }
 }
