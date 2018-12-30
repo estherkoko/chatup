@@ -11,14 +11,15 @@ import { HttpClient } from '@angular/common/http';
 export class UsersComponent implements OnInit {
 
   users: any;
+  searchText:string;
+  p:number = 1;
+  myPage: number =1;
   constructor(private chatService: ChatService, private httpClient: HttpClient)
  { }
 
   ngOnInit() {
     this.chatService.getUsersList().subscribe((response) => {
       this.users = response;
-      console.log("I am getting userlist");
-      //pagination
       
     });
   }

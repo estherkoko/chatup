@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes, RoutesRecognized} from '@angular/router';
+import { RouterModule, Routes} from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
@@ -21,7 +21,9 @@ import { FlashMessagesModule} from 'angular2-flash-messages';
 import { HttpModule } from '@angular/http';
 import { AuthGuard } from './guards/auth.guard';
 import { HttpClientModule } from '@angular/common/http';
+import { NgxPaginationModule } from 'ngx-pagination';
 import { ChatService } from './services/chat.service';
+import { FilterPipe } from './filter.pipe';
 
 const appRoutes : Routes =[
   {
@@ -64,7 +66,8 @@ const appRoutes : Routes =[
     LoginComponent,
     HomeComponent,
     UsersComponent,
-    UserDetailsComponent
+    UserDetailsComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
@@ -73,7 +76,8 @@ const appRoutes : Routes =[
     CommonModule,
     FlashMessagesModule.forRoot(),
     HttpModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxPaginationModule
     
   ],
   providers: [ValidateService, AuthService, ChatService, AuthGuard],
