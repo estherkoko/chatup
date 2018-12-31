@@ -34,7 +34,13 @@ export class UserDetailsComponent implements OnInit {
     private chatService: ChatService, private authService: AuthService) {
     this.socket = socketio('http://localhost:3000');
     this.created_date = new Date();
-    
+    //push message from server to client
+    this.getM()
+      .subscribe((message: string) => {
+        this.messages.push(message);
+
+      });
+
 
   }
   ngOnInit() {
@@ -47,12 +53,7 @@ export class UserDetailsComponent implements OnInit {
       this.authService.getProfile().subscribe(loggedUser => {
         this.loggedInUser = loggedUser.user;
         this.retrieveMessages();
-        //push message from server to client
-        this.getM()
-          .subscribe((message: string) => {
-            this.messages.push(message);
 
-          });
       });
     });
 
@@ -70,7 +71,9 @@ export class UserDetailsComponent implements OnInit {
       });
 
     });
+
   }
+
   getUserInformation(username) {
     this.chatService.getUserInfo(username).subscribe(data => {
       this.user = data;
