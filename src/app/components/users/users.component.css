@@ -14,7 +14,9 @@ h4{
 i.icon-color {
     color: #3b3a3a;
 }
-
+.height{
+    height: 100vh;
+}
 .collection .collection-item {
  
     padding:30px;
@@ -23,7 +25,8 @@ i.icon-color {
 }
 .collection{
     border: none;
-    color:#000
+    color:#000;
+
 }
 .form-control{
     border: 1px solid #fff!important;
@@ -35,7 +38,7 @@ i.icon-color {
 .form-control + .icon-color {
     position: absolute;
     right: 0;
-    margin-right: 250px;
+    margin-right: 430px;
     margin-top: -60px
   }
   input[type=text]{

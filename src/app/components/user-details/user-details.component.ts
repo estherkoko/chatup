@@ -53,7 +53,6 @@ export class UserDetailsComponent implements OnInit {
       this.authService.getProfile().subscribe(loggedUser => {
         this.loggedInUser = loggedUser.user;
         this.retrieveMessages();
-
       });
     });
 

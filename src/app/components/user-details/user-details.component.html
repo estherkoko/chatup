@@ -1,4 +1,4 @@
-<div class="row content" >
+<div class="row content " >
 <ul>
   <li *ngFor="let message of messages" >
     <div [ngClass]="'bubble ' + (message.sender_name != user.username ? 'blue-bubble': 'grey-bubble')">
@@ -15,7 +15,7 @@
 </div>
 
     <form class="col s12 " (submit)="onMessageSubmit(messageForm)" #messageForm = "ngForm">
-      <div class="row" id="messagebox">
+      <div class="row white" id="messagebox">
         <div class="input-field col s12 m9">
           <input id="content"  type="text"  placeholder = "Please enter your message here" [(ngModel)]= "content" name="content">
           <label for="Selected_User"></label>

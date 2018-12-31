@@ -25,7 +25,7 @@
 }
 .content{
   overflow:auto;
-  max-height: 450px;
+  max-height: 80vh;
 
 }
 
@@ -47,8 +47,11 @@ button{
 #messagebox{
    border: 1px solid #edeaea;
    margin:-25px;
-   height: 70px;
+   bottom: 5px;
+   position: absolute;
+
 }
+
 input{
     border-bottom: none!important
 }
