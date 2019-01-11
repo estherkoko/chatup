@@ -1,21 +1,19 @@
 .bubble {
-    margin: 0.6rem 0;
-    padding:0px 15px;
-
+margin: 5px 0;
 }
 
 .bubble a {
-    padding: 0.75rem;
-    border-radius: 15px;
-    color: #fff!important;
-    
+    padding: 6px 20px;
+    border-radius: 25px;
+    font-size: 12px;
 }
 
 .blue-bubble{
     text-align: right;
 }
 .blue-bubble  a {    
-    background-color: #0D47A1;
+    background-color: #0248FF;
+    color: #fff!important;
 }
 
 .grey-bubble a{
@@ -25,7 +23,7 @@
 }
 .content{
   overflow:auto;
-  max-height: 80vh;
+  height: 70vh;
 
 }
 
@@ -45,9 +43,9 @@ button{
     background-color: #0D47A1;
 }
 #messagebox{
-   border: 1px solid #edeaea;
-   margin:-25px;
-   bottom: 5px;
+   width: 100%;
+   left: 0;
+   bottom: 0;
    position: absolute;
 
 }
