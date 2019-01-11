@@ -72,6 +72,9 @@
     "ts-node": "~5.0.1",
     "tslint": "~5.9.1"
   },
+  "engines": {
+    "node": "10.8.0"
+  },
   "description": "This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.5.",
   "main": "app.js",
   "author": "Esther K",
