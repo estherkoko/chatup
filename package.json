@@ -5,10 +5,11 @@
     "ng": "ng",
     "start": "node app.js",
     "main": "app.js",
-    "build": "ng build --prod",
+    "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "postinstall": "ng build --aot --target=production"
   },
   "private": true,
   "dependencies": {
