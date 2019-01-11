@@ -56,7 +56,9 @@ app.use('/api/messages', messages);
 app.get('/', (req, res)=>{
   res.send("Invalid route - please check and try again");
 });
-
+app.get('/*', function(req, res){
+  res.sendFile(path.join(__dirname + '/dist/index.html'));
+})
 /* socket stuf */
 function handler (req, res) {
   fs.readFile(__dirname + '/index.html',
