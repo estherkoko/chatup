@@ -38,7 +38,9 @@ app.use(cors());
 //body parser middleware to grab the data
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
-app.use(express.static(path.join(__dirname, 'dist')));
+
+//Set static folder
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.set('view engine', 'html'); 
 
