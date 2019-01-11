@@ -53,9 +53,7 @@ app.use('/api/users', users);
 app.use('/api/messages', messages);
 
 //index route
-app.get('/', (req, res)=>{
-  res.send("Invalid route - please check and try again");
-});
+
 app.get('/*', function(req, res){
   res.sendFile(path.join(__dirname + '/dist/index.html'));
 })
