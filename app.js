@@ -13,6 +13,7 @@ const config = require('./config/db');
 const users = require('./routes/api/users');
 const messages = require('./routes/api/messages');
 const fs = require('fs');
+const jwt = jwt = require('express-jwt');
 
 require('./config/passport')(passport);
 
@@ -52,7 +53,7 @@ app.set('view engine', 'html');
 //Passport Middleware
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(expressJwt({secret: config.secret}).unless({path: ['/api/*']}));
+app.use(jwt({secret: config.secret}).unless({path: ['/api/*']}));
 
 app.use('/api/users', users);
 app.use('/api/messages', messages);
