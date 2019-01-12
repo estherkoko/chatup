@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postinstall": "ng build"
+    "postinstall": "ng build --prod"
   },
   "private": true,
   "dependencies": {
@@ -27,7 +27,6 @@
     "@types/socket.io-client": "^1.4.32",
     "angular-jwt": "^0.1.10",
     "angular2-flash-messages": "^3.0.1",
-    "angular2-jwt": "^0.2.3",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "core-js": "^2.5.4",

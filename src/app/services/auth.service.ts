@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
-import  'rxjs/add/operator/map';//for observables
-import { tokenNotExpired } from 'angular2-jwt';
-//import { JwtHelper } from 'angular2-jwt';
-//jwtHelper: JwtHelper = new JwtHelper();
+import  'rxjs/add/operator/map';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root'
@@ -55,7 +53,9 @@ export class AuthService {
   }
 
   loggedIn(){
-    return tokenNotExpired('id_token');
+      const helper = new JwtHelperService();
+      const isExpired = helper.isTokenExpired('id_token');
+      return isExpired;
   }
   logout(){
     this.authToken = null;
