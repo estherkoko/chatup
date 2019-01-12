@@ -56,7 +56,7 @@ app.use('/api/messages', messages);
 
 //index route
 
-app.get('*',function(req,res){
+http.get('*',function(req,res){
   res.sendFile(path.join(__dirname + '/dist/chatservice/index.html')); 
 });
 /* socket stuf */
