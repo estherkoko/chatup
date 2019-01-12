@@ -41,9 +41,9 @@ app.use(bodyParser.urlencoded({extended:true}));
 
 //Set static folder
 //app.use(express.static(path.join(__dirname, 'dist/chatservice')));
-app.get('*', function(req, res) {
+/*app.get('*', function(req, res) {
   res.sendFile('dist');
-});
+});*/
 app.set('view engine', 'html'); 
 
 
