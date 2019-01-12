@@ -90,8 +90,6 @@ export function tokenGetter() {
           }
       })
   ],
-    
-  ],
   providers: [ValidateService, AuthService, ChatService, AuthGuard],
   bootstrap: [AppComponent]
 })
