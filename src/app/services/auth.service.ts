@@ -11,14 +11,14 @@ import { tokenNotExpired } from 'angular2-jwt';
 export class AuthService {
   authToken: any;
   user: any;
- 
+  url: string ='http://localhost:3000';
   
   constructor(private http: Http) { }
 
   registerUser(user){
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('api/users/register', user, {headers: headers})
+    return this.http.post(this.url + '/api/users/register', user, {headers: headers})
       .map(res => res.json());
 
   }
@@ -26,7 +26,7 @@ export class AuthService {
   authenticateUser(user){
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('api/users/authenticate', user, {headers: headers})
+    return this.http.post(`${this.url}/api/users/authenticate`, user, {headers: headers})
       .map(res => res.json());
   }
   
@@ -35,7 +35,7 @@ export class AuthService {
     this.loadToken();
     headers.append('Authorization', this.authToken);
     headers.append('Content-Type', 'application/json');
-    return this.http.get('api/users/profile', {headers: headers})
+    return this.http.get(`${this.url}/api/users/profile`, {headers: headers})
       .map(res => res.json());
      
   }
@@ -64,4 +64,3 @@ export class AuthService {
     
   }
 }
-
