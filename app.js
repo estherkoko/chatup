@@ -57,7 +57,11 @@ app.use(passport.session());
 app.use('/api/users', users);
 app.use('/api/messages', messages);
 
+//index route
 
+app.get('*',function(req,res){
+  res.sendFile(__dirname + '/index.html'); 
+});
 /* socket stuf */
 function handler (req, res) {
   fs.readFile(__dirname + '/index.html',
