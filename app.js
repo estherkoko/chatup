@@ -56,9 +56,9 @@ app.use('/api/messages', messages);
 
 //index route
 
-app.get('/*', function(req, res){
-  res.sendFile(path.join(__dirname + 'dist'));
-})
+app.get('/home',function(req,res){
+  res.sendFile(__dirname + '/index.html'); 
+});
 /* socket stuf */
 function handler (req, res) {
   fs.readFile(__dirname + '/index.html',
