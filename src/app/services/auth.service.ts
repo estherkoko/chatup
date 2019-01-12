@@ -11,7 +11,7 @@ import { tokenNotExpired } from 'angular2-jwt';
 export class AuthService {
   authToken: any;
   user: any;
-  url: string ='http://localhost:3000';
+  url: string ='https://dry-ocean-45757.herokuapp.com';
   
   constructor(private http: Http) { }
 
