@@ -44,6 +44,9 @@ app.use(bodyParser.urlencoded({extended:true}));
 /*app.get('*', function(req, res) {
   res.sendFile('dist');
 });*/
+// Create link to Angular build directory
+var distDir = __dirname + "/dist/";
+app.use(express.static(distDir));
 app.set('view engine', 'html'); 
 
 
@@ -55,9 +58,10 @@ app.use('/api/users', users);
 app.use('/api/messages', messages);
 
 //index route
+app.get('/', (req, res)=>{
 
-app.get('*',function(req,res){
-  res.sendFile(path.join(__dirname + '/dist/chatservice/index.html')); 
+  res.send("Invalid route - please check and try again");
+
 });
 /* socket stuf */
 function handler (req, res) {
