@@ -57,12 +57,7 @@ app.use(passport.session());
 app.use('/api/users', users);
 app.use('/api/messages', messages);
 
-//index route
-app.get('/', (req, res)=>{
 
-  res.send("Invalid route - please check and try again");
-
-});
 /* socket stuf */
 function handler (req, res) {
   fs.readFile(__dirname + '/index.html',
