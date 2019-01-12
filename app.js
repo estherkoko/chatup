@@ -56,7 +56,7 @@ app.use('/api/messages', messages);
 
 //index route
 
-app.get('/',function(req,res){
+app.get('*',function(req,res){
   res.sendFile(__dirname + '/index.html'); 
 });
 /* socket stuf */
