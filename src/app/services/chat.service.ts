@@ -10,7 +10,7 @@ export class ChatService {
 
 
   //initialized URI to for the user controller
-  readonly baseURL = 'hhttps://dry-ocean-45757.herokuapp.com/api/';
+  readonly baseURL = 'https://dry-ocean-45757.herokuapp.com/api/';
   message: any 
   userData: any = {};
   constructor(private http: HttpClient) {}
