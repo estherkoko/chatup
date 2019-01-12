@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes} from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-
+import { JwtModule } from '@auth0/angular-jwt';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -57,6 +57,10 @@ const appRoutes : Routes =[
 
 ]
 
+export function tokenGetter() {
+    return localStorage.getItem('id_token');
+}
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -77,7 +81,15 @@ const appRoutes : Routes =[
     FlashMessagesModule.forRoot(),
     HttpModule,
     HttpClientModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+      JwtModule.forRoot({
+          config: {
+              tokenGetter: tokenGetter,
+              whitelistedDomains: ['dry-ocean-45757.herokuapp.com'],
+              blacklistedRoutes: ['dry-ocean-45757.herokuapp.com/api/auth']
+          }
+      })
+  ],
     
   ],
   providers: [ValidateService, AuthService, ChatService, AuthGuard],

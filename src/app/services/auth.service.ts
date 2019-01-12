@@ -35,7 +35,6 @@ export class AuthService {
     headers.append('Content-Type', 'application/json');
     return this.http.get(`${this.url}/api/users/profile`, {headers: headers})
       .map(res => res.json());
-     
   }
   storeUserData(token, user){
     localStorage.setItem('id_token', token);
@@ -47,9 +46,7 @@ export class AuthService {
   //fetch token from local storage
   loadToken(){
     const token = localStorage.getItem('id_token');
-    this.authToken = token;//token taken out of local storage
-     
-    
+    this.authToken = token;
   }
 
   loggedIn(){

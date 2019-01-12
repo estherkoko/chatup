@@ -14,7 +14,6 @@ const users = require('./routes/api/users');
 const messages = require('./routes/api/messages');
 const fs = require('fs');
 
-
 require('./config/passport')(passport);
 
 //use mongoose to connect to mongodb
@@ -53,6 +52,7 @@ app.set('view engine', 'html');
 //Passport Middleware
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(expressJwt({secret: config.secret}).unless({path: ['/api/*']}));
 
 app.use('/api/users', users);
 app.use('/api/messages', messages);
