@@ -45,7 +45,7 @@ app.use(bodyParser.urlencoded({extended:true}));
   res.sendFile('dist');
 });*/
 // Create link to Angular build directory
-var distDir = __dirname + "/dist/";
+var distDir = __dirname + "/dist";
 app.use(express.static(distDir));
 app.set('view engine', 'html'); 
 
@@ -61,7 +61,11 @@ app.use('/api/messages', messages);
 app.get('', (req, res)=>{
   res.send("Invalid route - please check and try again");
 });
-
+app.get('/*', function(req, res) {
+  res.sendFile(path.join(__dirname + '/dist/index.html'));
+  });
+  
+  
 /* socket stuf */
 function handler (req, res) {
   fs.readFile(__dirname + '/index.html',
