@@ -1,33 +1,33 @@
-<div class="row content" >
+<div class="row content " *ngIf="user" >
 <ul>
   <li *ngFor="let message of messages" >
     <div [ngClass]="'bubble ' + (message.sender_name != user.username ? 'blue-bubble': 'grey-bubble')">
       <a class="bubble-size ">
-        <p >{{ message.sender_name }} - {{ message.content }}</p>    
-        <p >{{ message.created_date | date: "short"}}</p>
+        <p>{{ message.content }}</p>
       </a>
-
+      <div><small class="grey-text text-darken-1">{{ message.created_date | date: "shortTime"}}</small></div>
     </div>
 
   </li>
 </ul>
-
-</div>
-
-    <form class="col s12 " (submit)="onMessageSubmit(messageForm)" #messageForm = "ngForm">
-      <div class="row" id="messagebox">
+<form class="col s12 " (submit)="onMessageSubmit(messageForm)" #messageForm = "ngForm">
+    <div class="" id="messagebox">
+      <div class="col white s9 offset-s3">
         <div class="input-field col s12 m9">
           <input id="content"  type="text"  placeholder = "Please enter your message here" [(ngModel)]= "content" name="content">
           <label for="Selected_User"></label>
         
         </div>
-     
+    
         <div class="col s12 m3">
             <button class="btn-floating btn-large" type="submit" [disabled]="!messageForm.valid">
               <i class="material-icons right">send</i>
             </button>
           </div>
-    
-    </div>
-    </form>
+          </div>
+  
+  </div>
+  </form>
+</div>
 
+    

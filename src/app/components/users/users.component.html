@@ -1,18 +1,38 @@
-<div class="container ">
-<div class="row z-depth-3 #ffffff white">
-  <div class="col s4 hide-on-med-and-down side ">
-      <ul class=" collection">
-          <input type="text" placeholder="search"  [(ngModel)]="searchText" class="validate form-control">
-          <i class="material-icons icon-color">search</i>
-          <li class="collection-item " *ngFor="let user of (users | paginate: {itemsPerPage: 5, currentPage: p} | filter:  {fullname: searchText})">
-           <div>{{user.fullname}}<a [routerLink]="['livechat', user.username]" class="secondary-content"><i class="material-icons icon-color">chevron_right</i></a></div></li>
-           <pagination-controls (pageChange)= "p = $event"></pagination-controls>
+
+<div class="row">
+  <div class="col s12 m3 hide-on-med-and-down side height ">
+        <div class="">
+            <form class="">
+                <div class="">
+                <div class="input-field mb-0 border-bottom">
+                    <i class="material-icons prefix">mode_edit</i>
+                    <textarea id="icon_prefix2" class="materialize-textarea border-none mb-0 pb-0" [(ngModel)]="searchText" name="searchText"></textarea>
+                    <label for="icon_prefix2">First Name</label>
+                </div>
+                </div>
+            </form>
+        </div>
+      <ul class="chat">
+          <li class="chat__users" *ngFor="let user of users | paginate: {itemsPerPage: 5, currentPage: p} | filter:  {fullname: searchText}">            
+            <div class="row mb-0">
+                <div class="col s2">
+                    <img src="http://blogs.edweek.org/edweek/sarameads_policy_notebook/Elliot%20Sanchez%20Headshot%20-%20color%20lofi%20square%20%282%29.jpg" alt="" class="circle responsive-img"> 
+                </div>
+                <div class="col s7 pl-0">
+                    <a [routerLink]="['livechat', user.username]">
+                        <div class="black-text">{{user.fullname}}</div>
+                        <div><small class="grey-text text-darken-1">hellohello</small></div>
+                    </a>
+                </div>
+                <div class="col s3 pl-0 right-align">
+                    <div><small class="red white-text new-badge">02 Feb</small></div>
+                </div>
+            </div>
+        </li>
+           <pagination-controls (pageChange)= "p = $event" class="pagination"></pagination-controls>
         </ul>
   </div>
-  <div class="col s12 m8">
-
+  <div class="col s12 m9 height">
       <router-outlet></router-outlet>
-
   </div>
-</div>
 </div>

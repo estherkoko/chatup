@@ -21,6 +21,7 @@ export class UserDetailsComponent implements OnInit {
   username: any;
   user: any;
   messages: any;
+  message:any;
   loggedInUser: any;
   receiver_id: String;
   sender_id: String;
@@ -36,31 +37,40 @@ export class UserDetailsComponent implements OnInit {
     this.created_date = new Date();
     //push message from server to client
     this.getM()
-      .subscribe((message: string) => {
-        this.messages.push(message);
+    .subscribe((message: string) => {
+      this.messages.push(message);
 
-      });
+    });
 
 
   }
   ngOnInit() {
 
-    this.route.params.subscribe(params => {
+   /* this.route.params.subscribe(params => {
       //get logged in user information and retrieve messages once page loads  
-      this.username = this.route.snapshot.params['username'];
+   /*   this.username = this.route.snapshot.params['username'];
       this.getUserInformation(this.username);
 
       this.authService.getProfile().subscribe(loggedUser => {
         this.loggedInUser = loggedUser.user;
         this.retrieveMessages();
-
       });
+    });*/
+    this.username = this.route.snapshot.params['username'];
+
+    this.getUserInformation(this.username);
+
+
+
+    this.authService.getProfile().subscribe(loggedUser =>{
+
+      this.loggedInUser=loggedUser.user;
+
+      this.retrieveMessages();
+  
     });
-
-
-
   }
-
+  
 
 
   public getM = () => {
