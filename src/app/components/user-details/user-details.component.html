@@ -1,17 +1,4 @@
-<div class="row content " >
-    <div class="mb-0 border-bottom">
-      <div class="col s9">
-        <div class="col s1">
-              <img src="http://blogs.edweek.org/edweek/sarameads_policy_notebook/Elliot%20Sanchez%20Headshot%20-%20color%20lofi%20square%20%282%29.jpg" alt="" class="circle responsive-img"> 
-          </div>
-          <div class="col s10 pl-0">
-              <a [routerLink]="['livechat', user.username]">
-                  <div class="black-text">{{user.fullname}}</div>
-                  <div><small class="grey-text text-darken-1">hellohello</small></div>
-              </a>
-          </div>
-          </div>
-    </div>
+<div class="row content " *ngIf="user" >
 <ul>
   <li *ngFor="let message of messages" >
     <div [ngClass]="'bubble ' + (message.sender_name != user.username ? 'blue-bubble': 'grey-bubble')">
