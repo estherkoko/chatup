@@ -2,7 +2,10 @@ import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import  'rxjs/add/operator/map';
 import { JwtHelperService } from '@auth0/angular-jwt';
+<<<<<<< HEAD
 import { tokenNotExpired } from 'angular2-jwt';
+=======
+>>>>>>> 9c16dafab8dc9cce9a88ed0a3e4a94c2fc7234a7
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +13,7 @@ import { tokenNotExpired } from 'angular2-jwt';
 export class AuthService {
   authToken: any;
   user: any;
-  url: string ='http://localhost:3000';
+  url: string ='https://dry-ocean-45757.herokuapp.com';
   
   constructor(private http: Http) { }
 
@@ -51,10 +54,16 @@ export class AuthService {
   }
 
   loggedIn(){
+<<<<<<< HEAD
     //const helper = new JwtHelperService();
    // const isExpired = helper.isTokenExpired(localStorage.getItem('id_token'));
     //return isExpired;
     return tokenNotExpired('id_token');
+=======
+      const helper = new JwtHelperService();
+      const isExpired = helper.isTokenExpired(localStorage.getItem('id_token'));
+      return isExpired;
+>>>>>>> 9c16dafab8dc9cce9a88ed0a3e4a94c2fc7234a7
   }
   logout(){
     this.authToken = null;
