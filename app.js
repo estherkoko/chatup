@@ -17,7 +17,17 @@ const http = require('http').createServer(app);
 const io = require('socket.io').listen(http);
 
 const mongoose = require("mongoose");
+<<<<<<< HEAD
 const port = process.env.PORT || 3000;//port number
+=======
+<<<<<<< HEAD
+
+const port = process.env.port || 3000;//port number
+
+=======
+const port = process.env.PORT || 3000;//port number
+>>>>>>> 9c16dafab8dc9cce9a88ed0a3e4a94c2fc7234a7
+>>>>>>> 4d6f38c5622cea433439f9b87f69da8ffc1d02cf
 const config = require('./config/db');
 
 const users = require('./routes/api/users');
@@ -75,7 +85,18 @@ app.use(cors());
 app.use(bodyParser.json());
 
 app.use(bodyParser.urlencoded({extended:true}));
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+
+app.use(express.static(path.join(__dirname, 'dist')));
+
+
+
+=======
+
+>>>>>>> 4d6f38c5622cea433439f9b87f69da8ffc1d02cf
 //Set static folder
 //app.use(express.static(path.join(__dirname, 'dist/chatservice')));
 /*app.get('*', function(req, res) {
@@ -84,6 +105,10 @@ app.use(bodyParser.urlencoded({extended:true}));
 // Create link to Angular build directory
 var distDir = __dirname + "/dist";
 app.use(express.static(distDir));
+<<<<<<< HEAD
+=======
+>>>>>>> 9c16dafab8dc9cce9a88ed0a3e4a94c2fc7234a7
+>>>>>>> 4d6f38c5622cea433439f9b87f69da8ffc1d02cf
 app.set('view engine', 'html'); 
 
 
@@ -105,15 +130,37 @@ app.use('/api/messages', messages);
 
 
 //index route
+<<<<<<< HEAD
 app.get('', (req, res)=>{
   res.send("Invalid route - please check and try again");
 
 });
+=======
+<<<<<<< HEAD
+
+app.get('/', (req, res)=>{
+
+=======
+app.get('', (req, res)=>{
+>>>>>>> 9c16dafab8dc9cce9a88ed0a3e4a94c2fc7234a7
+  res.send("Invalid route - please check and try again");
+
+});
+<<<<<<< HEAD
+
+
+
+=======
+>>>>>>> 4d6f38c5622cea433439f9b87f69da8ffc1d02cf
 app.get('/*', function(req, res) {
   res.sendFile(path.join(__dirname + '/dist/index.html'));
   });
   
   
+<<<<<<< HEAD
+=======
+>>>>>>> 9c16dafab8dc9cce9a88ed0a3e4a94c2fc7234a7
+>>>>>>> 4d6f38c5622cea433439f9b87f69da8ffc1d02cf
 /* socket stuf */
 
 function handler (req, res) {

@@ -76,11 +76,31 @@ router.post('/authenticate', (req, res, next)=>{
 });
 
 //Profile and protecting the profile route
+<<<<<<< HEAD
 router.get('/profile', (req, res, next)=>{
     res.json({user: req.user});
+=======
+<<<<<<< HEAD
+//router.get('/profile', (req, res, next)=>{
+   //s res.json({user: req.user});
+//});
+
+
+router.get('/profile', passport.authenticate('jwt', {session:false}),(req, res, next)=>{
+    res.json({user: req.user});
+    //res.send('PROFILE');
+=======
+router.get('/profile', (req, res, next)=>{
+    res.json({user: req.user});
+>>>>>>> 4d6f38c5622cea433439f9b87f69da8ffc1d02cf
 });
+>>>>>>> 9c16dafab8dc9cce9a88ed0a3e4a94c2fc7234a7
 
+<<<<<<< HEAD
 
+=======
+});
+>>>>>>> 4d6f38c5622cea433439f9b87f69da8ffc1d02cf
 //all users
 router.get('/', (req, res, next)=>{
     User.find((err,users) =>{
